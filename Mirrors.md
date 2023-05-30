@@ -458,6 +458,8 @@ More info at https://mirrors.cqupt.edu.cn/.
 
 #### Mirrors by [Shanghai Jiao Tong University, *NIX User Group](https://sjtug.org/)
 
+Hosted in Shanghai, China. Updated once per 2 hours, 1Gb/s with IPv4/IPv6 support.
+
 | Repository                                             | sources.list entry                                                    |
 |:-------------------------------------------------------|:----------------------------------------------------------------------|
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.sjtu.edu.cn/termux/termux-main/ stable main` |
