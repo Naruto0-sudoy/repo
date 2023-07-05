@@ -265,6 +265,26 @@ More info at https://ftp.fau.de/about.html .
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://ftp.fau.de/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://ftp.fau.de/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [FlokiNET](https://flokinet.is)
+
+This mirror is hosted in Reykjavík, Iceland. Updated once per day. 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                       |
+|:-------------------------------------------------------|:---------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://is.mirror.flokinet.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://is.mirror.flokinet.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://is.mirror.flokinet.net/termux/termux-x11 x11 main`     |
+
+#### Mirrors by [FlokiNET](https://flokinet.is)
+
+This mirror is hosted in Bucharest, Romania. Updated once per day. 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                       |
+|:-------------------------------------------------------|:---------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://ro.mirror.flokinet.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://ro.mirror.flokinet.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://ro.mirror.flokinet.net/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
