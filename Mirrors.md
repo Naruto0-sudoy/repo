@@ -285,6 +285,16 @@ This mirror is hosted in Bucharest, Romania. Updated once per day. 1Gbp/s and su
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://ro.mirror.flokinet.net/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://ro.mirror.flokinet.net/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [M3DZIK(https://github.com/M3DZIK)
+
+Hosted in Frankfurt, Germany, Updated every 15 minutes. 4Gbp/s and is IPV4 only.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.medzik.dev/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.medzik.dev/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.medzik.dev/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
