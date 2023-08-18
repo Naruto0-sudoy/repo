@@ -84,13 +84,9 @@ Some notes about the linker:
 - The Termux build system uses [termux-elf-cleaner](https://github.com/termux/termux-elf-cleaner)
   to strip away unused ELF entries causing the above mentioned linker warnings.
 
-- Symbol versioning is supported only as of Android 6.0, so is stripped away.
-
 - `DT_RPATH`, the list of directories where the linker should look for shared
-  libraries is not supported, so is stripped away.
-
-- `DT_RUNPATH`, the same as above but looked at after `LD_LIBRARY_PATH`, is
-  supported only from Android 7.0, so is stripped away.
+  libraries is not supported, so is stripped away. `DT_RUNPATH` should be used
+  instead (supported since Android 7.0).
 
 - Symbol visibility when opening shared libraries using `dlopen()` works
   differently. On a normal linker, when an executable linking against a shared
