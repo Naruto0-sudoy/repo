@@ -14,7 +14,7 @@ the app's home directory. This execution of files from the writable app home
 directory is a W^X violation. Apps should load only the binary code that's
 embedded within an app's APK file.
 
-Related issue: https://github.com/termux/termux-app/issues/1072
+Related issue: https://github.com/termux/termux-app/issues/1072 and https://github.com/termux/termux-app/issues/2155
 
 *We do not want to introduce the breaking changes to comply with Google's
 requirements. But as result Termux does not support Android 10 officially.*
