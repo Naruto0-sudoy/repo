@@ -295,6 +295,16 @@ Hosted in Frankfurt, Germany, Updated every 15 minutes. 4Gbp/s and is IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.medzik.dev/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.medzik.dev/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [cfxproxy](https://github.com/cfxproxy)
+
+Hosted in Kalisz, Poland. Updated once per day. 1Gbp/s and is IPV4 only.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.cfe.re/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.cfe.re/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.cfe.re/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
