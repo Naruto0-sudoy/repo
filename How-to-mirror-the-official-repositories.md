@@ -23,7 +23,7 @@ If feasible please allow for rsync on your mirror as well, this allows us to use
 If you cannot access packages.termux.dev for some reason then you can also sync from the grimler.se mirror. Authentication is done with username rsync and password termuxmirror, so to sync all mirrors run:
 
 ```
-RSYNC_PASSWORD=termuxmirror rsync -a --delete rsync@grimler.se::termux termux
+rsync -a --delete rsync://grimler.se/termux termux
 ```
 
 ## Mirroring with apt-mirror
