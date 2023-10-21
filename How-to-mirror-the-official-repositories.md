@@ -20,7 +20,7 @@ rsync -a --delete --exclude termux-main-21 rsync://packages.termux.dev/termux te
 
 If feasible please allow for rsync on your mirror as well, this allows us to use [mirrorbits](https://github.com/etix/mirrorbits/) to track the status of mirrors (`rsync -r -L ...` is used under the hood). See [https://mirror.termux.dev/?mirrorstats](https://mirror.termux.dev/?mirrorstats) for currently available mirror.s
 
-If you cannot access packages.termux.dev for some reason then you can also sync from the grimler.se mirror. Authentication is done with username rsync and password termuxmirror, so to sync all mirrors run:
+If you cannot access packages.termux.dev for some reason then you can also sync from the grimler.se mirror. To sync all mirrors run:
 
 ```
 rsync -a --delete rsync://grimler.se/termux termux
