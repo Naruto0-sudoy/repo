@@ -315,6 +315,16 @@ Hosted in Brochier, Brazil. Updated once per day. 500MB/s and support IPV4/IPV6.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.rda.run/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.rda.run/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [SunRed](https://sunred.org/)
+
+Hosted in Falkenstein, Germany. Updated once per 2 hours, 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.sunred.org/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.sunred.org/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.sunred.org/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
