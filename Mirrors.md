@@ -543,3 +543,13 @@ More info at https://mirrors.aliyun.com/about.
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.iscas.ac.cn/termux/apt/termux-main/ stable main`        |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.iscas.ac.cn/termux/apt/termux-root/ root stable`        |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.iscas.ac.cn/termux/apt/termux-x11/ x11 main`            |
+
+#### Mirrors by [lrinQVQ](https://github.com/lrinQVQ)
+
+Hosted in Chongqing, China. Updated every 1.5-2.5h (Randomized Delay). 1Gb/s and is IPv4 only.
+
+| Repository                                             | sources.list entry                                                          |
+|:-------------------------------------------------------|:----------------------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.qvq.net.cn/termux/apt/termux-main/ stable main`        |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.qvq.net.cn/termux/apt/termux-root/ root stable`        |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.qvq.net.cn/termux/apt/termux-x11/ x11 main`            |
