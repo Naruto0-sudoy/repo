@@ -65,6 +65,7 @@ Packages:
 Other:
 * [termux.github.io](https://github.com/termux/termux.github.io): Termux home page website.
 * [Termux's fork of upload-release-action](https://github.com/termux/upload-release-action): Used for uploading bootstrap archives to GitHub release
+* [Termux language server](https://github.com/termux/termux-language-server): a language server for Termux `build.sh` scripts
 
 ### External Resources Links
 
