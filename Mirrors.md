@@ -325,6 +325,16 @@ Hosted in Falkenstein, Germany. Updated once per 2 hours, 1Gbp/s and support IPV
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.sunred.org/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.sunred.org/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [Andriy Utkin](http://autkin.net/)
+
+Hosted in Cambridge, UK. Updated nightly, 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.autkin.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.autkin.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.autkin.net/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
