@@ -327,7 +327,7 @@ Hosted in Falkenstein, Germany. Updated once per 2 hours, 1Gbp/s and support IPV
 
 #### Mirrors by [Andriy Utkin](http://autkin.net/)
 
-Hosted in Cambridge, UK. Updated nightly, 1Gbp/s and support IPV4/IPV6.
+Hosted in Cambridge, UK. Updated nightly, 2MB/s and support IPV4/IPV6.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
