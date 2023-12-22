@@ -556,7 +556,7 @@ More info at https://mirrors.aliyun.com/about.
 
 #### Mirrors by [lrinQVQ](https://github.com/lrinQVQ)
 
-Hosted in Chongqing, China. Updated every 1.5-2.5h (Randomized Delay). 1Gb/s and is IPv4 only.
+Hosted in Chongqing, China. Updated every 1.5-2.5h (Randomized Delay). 1Gb/s and is IPv4/6 .
 
 | Repository                                             | sources.list entry                                                          |
 |:-------------------------------------------------------|:----------------------------------------------------------------------------|
