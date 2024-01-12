@@ -337,7 +337,7 @@ Hosted in Cambridge, UK. Updated nightly, 2MB/s and support IPV4/IPV6.
 
 #### Mirrors by [bouwhuis.network](https://bouwhuis.network/)
 
-Hosted in Amsterdam, NL. Updated every 6 hours and 15 minutes, 10Gbps/s and support IPV4/IPV6.
+Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbps/s and support IPV4/IPV6.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
