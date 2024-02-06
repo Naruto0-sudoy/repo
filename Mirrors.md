@@ -98,8 +98,7 @@ Hosted in Jakarta, Indonesia. Updated four times per day.
 
 #### Mirrors by [Grimler](https://github.com/grimler91)
 
-Mirrored from the main node, updated fairly frequently during "office
-hours"
+Hosted in Helsinki, Finland. Mirrored from the main node, updated hourly.
 
 | Repository                                             | sources.list entry                                      |
 |:-------------------------------------------------------|:--------------------------------------------------------|
