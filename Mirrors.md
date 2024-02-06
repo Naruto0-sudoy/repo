@@ -93,8 +93,8 @@ Hosted in Jakarta, Indonesia. Updated four times per day.
 | Repository                                             | sources.list entry                                                             |
 |:-------------------------------------------------------|:-------------------------------------------------------------------------------|
 | [Main](https://github.com/termux/termux-packages)      | `deb https://linux.domainesia.com/applications/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://linux.domainesia.com/applications/termux/root root stable`        |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://linux.domainesia.com/applications/termux/x11 x11 main`            |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://linux.domainesia.com/applications/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://linux.domainesia.com/applications/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [DiffieHellman](https://www.endianness.com/)
 
