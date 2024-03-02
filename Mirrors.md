@@ -354,6 +354,16 @@ Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbps/s and support IPV4/IPV6.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.bouwhuis.network/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.bouwhuis.network/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [Tomás Leite de Castro](https://leitecastro.com/)
+
+Hosted in Lisbon, Portugal. Updated once per day, 20Gbps/s and support IPV4/IPV6/RSYNC.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.leitecastro.com/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.leitecastro.com/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.leitecastro.com/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
