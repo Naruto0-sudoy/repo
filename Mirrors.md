@@ -440,30 +440,6 @@ More info at https://mirrors.cqupt.edu.cn/.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.cqupt.edu.cn/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.cqupt.edu.cn/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [Dongguan University of Technology](https://www.dgut.edu.cn/)
-
-| Repository                                             | sources.list entry                                                   |
-|:-------------------------------------------------------|:---------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.dgut.edu.cn/termux/apt/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.dgut.edu.cn/termux/apt/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.dgut.edu.cn/termux/apt/termux-x11 x11 main`     |
-
-#### Mirrors by [Harbin Institute of Technology](https://www.hit.edu.cn/)
-
-| Repository                                             | sources.list entry                                                  |
-|:-------------------------------------------------------|:--------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.hit.edu.cn/termux/apt/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.hit.edu.cn/termux/apt/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.hit.edu.cn/termux/apt/termux-x11 x11 main`     |
-
-#### Mirrors by [Nanjing University of Posts and Telecommunications](https://mirrors.njupt.edu.cn/)
-
-| Repository                                             | sources.list entry                                                   |
-|:-------------------------------------------------------|:---------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.njupt.edu.cn/termux/apt/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.njupt.edu.cn/termux/apt/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.njupt.edu.cn/termux/apt/termux-x11 x11 main`     |
-
 #### Mirrors by [Nanyang Institute of Technology](https://mirror.nyist.edu.cn/)
 
 | Repository                                             | sources.list entry                                                   |
@@ -495,15 +471,6 @@ More info at https://mirrors.cqupt.edu.cn/.
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.sau.edu.cn/termux/apt/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.sau.edu.cn/termux/apt/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.sau.edu.cn/termux/apt/termux-x11 x11 main`     |
-
-#### Mirrors by [South China Agricultural University](https://mirrors.scau.edu.cn/)
-
-| Repository                                             | sources.list entry                                                   |
-|:-------------------------------------------------------|:---------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.scau.edu.cn/termux/apt/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.scau.edu.cn/termux/apt/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.scau.edu.cn/termux/apt/termux-x11 x11 main`     |
-
 
 #### Mirrors by [Southern University of Science and Technology](https://mirrors.sustech.edu.cn/)
 
