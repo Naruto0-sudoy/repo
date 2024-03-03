@@ -356,7 +356,7 @@ Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbps/s and support IPV4/IPV6.
 
 #### Mirrors by [Tomás Leite de Castro](https://leitecastro.com/)
 
-Hosted in Lisbon, Portugal. Updated once per day, 20Gbps/s and support IPV4/IPV6/RSYNC.
+Hosted in Lisbon, Portugal. Updated every one hour, 20Gbps/s and support IPV4/IPV6/RSYNC.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
