@@ -346,7 +346,7 @@ Hosted in Cambridge, UK. Updated nightly, 2MB/s and support IPV4/IPV6.
 
 #### Mirrors by [bouwhuis.network](https://bouwhuis.network/)
 
-Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbps/s and support IPV4/IPV6.
+Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbp/s and support IPV4/IPV6.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
@@ -356,13 +356,23 @@ Hosted in Amsterdam, NL. Updated every 6 hours, 10Gbps/s and support IPV4/IPV6.
 
 #### Mirrors by [Tomás Leite de Castro](https://leitecastro.com/)
 
-Hosted in Lisbon, Portugal. Updated every one hour, 20Gbps/s and support IPV4/IPV6/RSYNC.
+Hosted in Lisbon, Portugal. Updated every one hour, 20Gbp/s and support IPV4/IPV6/RSYNC.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.leitecastro.com/termux/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.leitecastro.com/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.leitecastro.com/termux/termux-x11 x11 main`     |
+
+### Mirrors by [Nguyen Hoang](https://github.com/HoangTheBoss)
+
+Hosted in Hanoi, Vietnam. Update Twice a day, 1Gbp/s and support IPV4 only.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.nguyenhoang.cloud/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.nguyenhoang.cloud/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.nguyenhoang.cloud/termux/termux-x11 x11 main`     |
 
 ### Mirrors hosted in India
 
