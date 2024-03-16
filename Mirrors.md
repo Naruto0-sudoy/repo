@@ -374,6 +374,16 @@ Hosted in Hanoi, Vietnam. Update Twice a day, 1Gbp/s and support IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.nguyenhoang.cloud/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.nguyenhoang.cloud/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [karibu](mailto:karibu@freedif.com)
+
+Hosted in Singapore. Updated every one hour, 10Gbp/s and support IPV4 only.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.freedif.org/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.freedif.org/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.freedif.org/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
