@@ -384,6 +384,16 @@ Hosted in Singapore. Updated every one hour, 10Gbp/s and support IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.freedif.org/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.freedif.org/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [Taiwan Digital Streaming Co.](https://www.twds.com.tw/)
+
+Hosted in Taiwan. Updated every 3 hours, 20 Gbps (80 Gbps for peers) and support IPV4/IPV6/RSYNC.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.twds.com.tw/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.twds.com.tw/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.twds.com.tw/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
