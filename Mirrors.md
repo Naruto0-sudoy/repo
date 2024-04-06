@@ -458,9 +458,9 @@ Contact: `fakeshell@bardia.tech`
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.bardia.tech/termux/termux-root/ root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.bardia.tech/termux/termux-x11/ x11 main`               |
 
-### Mirrors hosted in China
+### Mirrors hosted in Chinese Mainland
 
-Mirrors for users in China for better ping and download speed.
+Mirrors for users in Chinese Mainland for better ping and download speed.
 
 #### Mirrors by [Beijing Foreign Studies University](http://www.bfsu.edu.cn/)
 
