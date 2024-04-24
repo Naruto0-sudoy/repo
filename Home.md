@@ -32,7 +32,7 @@ Thus, application and add-ons obtained from different source can't be mixed.
 * [termux-float](https://github.com/termux/termux-float): Termux:Float add-on sources.
 * [termux-styling](https://github.com/termux/termux-styling): Termux:Styling add-on sources.
 * [termux-tasker](https://github.com/termux/termux-tasker): Termux:Tasker add-on sources.
-* [termux-x11](https://github.com/termux/termux-x11): Termux:X11 add-on sources. Unmaintained.
+* [termux-x11](https://github.com/termux/termux-x11): Termux:X11 add-on sources.
 
 ### Packages
 
