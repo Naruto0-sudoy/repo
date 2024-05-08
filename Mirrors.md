@@ -589,3 +589,13 @@ Hosted in Chongqing, China. Updated every 1.5-2.5h (Randomized Delay). 1Gb/s and
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.qvq.net.cn/termux/apt/termux-main/ stable main`        |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.qvq.net.cn/termux/apt/termux-root/ root stable`        |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.qvq.net.cn/termux/apt/termux-x11/ x11 main`            |
+
+#### Mirrors by [Huazhong University of Science and Technology](mailto:mirror_support@hust.edu.cn)
+
+Hosted in Wuhan, Hubei, China. Updated every 2 hours. 1Gbp/s and support IPV4 and IPV6.
+
+| Repository                                             | sources.list entry                                                          |
+|:-------------------------------------------------------|:----------------------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.hust.edu.cn/termux/apt/termux-main/ stable main`        |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.hust.edu.cn/termux/apt/termux-root/ root stable`        |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.hust.edu.cn/termux/apt/termux-x11/ x11 main`            |
