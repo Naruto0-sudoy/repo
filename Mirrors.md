@@ -394,16 +394,6 @@ Hosted in Taiwan. Updated every 3 hours, 20 Gbps (80 Gbps for peers) and support
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.twds.com.tw/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.twds.com.tw/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [Tbh](https://thebosshacker.in)
-
-Hosted in Paris, France. Updated every 6 hours, 1 Gbps and support IPV4 only.
-
-| Repository                                             | sources.list entry                                               |
-|:-------------------------------------------------------|:-----------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.thebosshacker.in/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.thebosshacker.in/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.thebosshacker.in/termux/termux-x11 x11 main`     |
-
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
