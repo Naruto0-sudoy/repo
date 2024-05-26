@@ -9,10 +9,7 @@ to Android OS version 10. But due to new operating system behavior changes we
 cannot do so and have to use SDK level 28.
 
 https://developer.android.com/about/versions/10/behavior-changes-10#execute-permission
-> Untrusted apps that target Android 10 cannot invoke exec() on files within
-the app's home directory. This execution of files from the writable app home
-directory is a W^X violation. Apps should load only the binary code that's
-embedded within an app's APK file.
+> Execution of files from the writable app home directory is a [W^X violation](https://en.wikipedia.org/wiki/W%5EX). Apps should load only the binary code that's embedded within an app's APK file.
 
 Related issue: https://github.com/termux/termux-app/issues/1072 and https://github.com/termux/termux-app/issues/2155
 
