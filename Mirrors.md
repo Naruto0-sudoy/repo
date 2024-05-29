@@ -56,6 +56,16 @@ Updated four times per day.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://termux.mentality.rip/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://termux.mentality.rip/termux-x11 x11 main`     |
 
+#### Mirrors by the [Academic Computer Club in Umeå](https://www.accum.se/)
+
+Updated every four hours.
+
+| Repository                                             | sources.list entry                                         |
+|:-------------------------------------------------------|:-----------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.accum.se/mirror/termux.dev/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.accum.se/mirror/termux.dev/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.accum.se/mirror/termux.dev/termux-x11 x11 main`     |
+
 #### Mirrors by [amocrenco](https://github.com/amocrenco)
 
 Hosted in Chisinau, Moldova. Updated once per 6 hours. 10Gb/s and support IPV4/IPV6.
