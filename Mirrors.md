@@ -66,6 +66,16 @@ Updated every four hours.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.accum.se/mirror/termux.dev/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.accum.se/mirror/termux.dev/termux-x11 x11 main`     |
 
+#### Mirrors by [AG DSN in Dresden](https://agdsn.de)
+
+Updated daily.
+
+| Repository                                             | sources.list entry                                         |
+|:-------------------------------------------------------|:-----------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://ftp.agdsn.de/termux/termux-main stable main`  |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://ftp.agdsn.de/termux/termux-root root stable`  |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://ftp.agdsn.de/termux/termux-x11 x11 main`      |
+
 #### Mirrors by [amocrenco](https://github.com/amocrenco)
 
 Hosted in Chisinau, Moldova. Updated once per 6 hours. 10Gb/s and support IPV4/IPV6.
@@ -286,7 +296,7 @@ More info at https://ftp.fau.de/about.html .
 
 #### Mirrors by [FlokiNET](https://flokinet.is)
 
-This mirror is hosted in Reykjavík, Iceland. Updated once per day. 1Gbp/s and support IPV4/IPV6.
+This mirror is hosted in Reykjavík in Iceland, Bucharest in Romania and in the Netherlands. Updated once per day. 1Gbp/s and support IPV4/IPV6.
 
 | Repository                                             | sources.list entry                                       |
 |:-------------------------------------------------------|:---------------------------------------------------------|
@@ -294,15 +304,17 @@ This mirror is hosted in Reykjavík, Iceland. Updated once per day. 1Gbp/s and s
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://is.mirror.flokinet.net/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://is.mirror.flokinet.net/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [FlokiNET](https://flokinet.is)
-
-This mirror is hosted in Bucharest, Romania. Updated once per day. 1Gbp/s and support IPV4/IPV6.
-
 | Repository                                             | sources.list entry                                       |
 |:-------------------------------------------------------|:---------------------------------------------------------|
 | [Main](https://github.com/termux/termux-packages)      | `deb https://ro.mirror.flokinet.net/termux/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://ro.mirror.flokinet.net/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://ro.mirror.flokinet.net/termux/termux-x11 x11 main`     |
+
+| Repository                                             | sources.list entry                                       |
+|:-------------------------------------------------------|:---------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://nl.mirror.flokinet.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://nl.mirror.flokinet.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://nl.mirror.flokinet.net/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [M3DZIK](https://github.com/M3DZIK)
 
@@ -393,6 +405,16 @@ Hosted in Singapore. Updated every one hour, 10Gbp/s and support IPV4 only.
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.freedif.org/termux/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.freedif.org/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.freedif.org/termux/termux-x11 x11 main`     |
+
+#### Mirrors by @7zx In Porto, Portugal
+
+Updated daily.
+
+| Repository                                             | sources.list entry                                             |
+|:-------------------------------------------------------|:---------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.polido.pt/termux/termux-main stable main`  |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.polido.pt/termux/termux-root root stable`  |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.polido.pt/termux/termux-x11 x11 main`      |
 
 #### Mirrors by [Taiwan Digital Streaming Co.](https://www.twds.com.tw/)
 
