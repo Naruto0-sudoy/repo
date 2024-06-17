@@ -153,7 +153,7 @@ Following environment variables affect behaviour of Termux build system:
   Standalone toolchain, downloaded sources, package build directories will be
   created here. Default is `$HOME/.termux-build`.
 
-- `TERMUX_MAKE_PROCESSES` - Specifies amount of jobs that should be spawned by
+- `TERMUX_PKG_MAKE_PROCESSES` - Specifies amount of jobs that should be spawned by
   utility `make`. Default is output of command `nproc`.
 
 - `TERMUX_PKG_API_LEVEL` - Specifies Android API level against which packages
