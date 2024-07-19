@@ -88,7 +88,9 @@ Hosted in Chisinau, Moldova. Updated once per 6 hours. 10Gb/s and support IPV4/I
 
 #### Mirrors by [Astra ISP](https://astra.in.ua/)
 
-Updated once per 4 hours.
+**Not recommended for use, outdated.**
+
+~~Updated once per 4 hours.~~ Repository snapshot as of: `Mon, 30 Oct 2023 18:45:52 UTC`
 
 | Repository                                             | sources.list entry                                           |
 |:-------------------------------------------------------|:-------------------------------------------------------------|
