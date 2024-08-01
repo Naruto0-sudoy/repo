@@ -428,6 +428,15 @@ Hosted in Taiwan. Updated every 3 hours, 20 Gbps (80 Gbps for peers) and support
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.twds.com.tw/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.twds.com.tw/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [GNLUG](https://gnlug.org/)
+
+Hosted in Ashburn, VA, United States. Updated every 6 hours, 1 Gbps and support IPV4/IPV6/RSYNC.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://gnlug.org/pub/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://gnlug.org/pub/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://gnlug.org/pub/termux/termux-x11 x11 main`     |
 
 ### Mirrors hosted in India
 
