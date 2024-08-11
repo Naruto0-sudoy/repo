@@ -118,15 +118,15 @@ Hosted in Jakarta, Indonesia. Updated four times per day.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://linux.domainesia.com/applications/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://linux.domainesia.com/applications/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [DiffieHellman](https://www.endianness.com/)
+#### Mirrors by [DiffieHellman](https://middlendian.com/)
 
 Hosted in Australia. Updated daily.
 
-| Repository                                             | sources.list entry                                                 |
-|:-------------------------------------------------------|:-------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.endianness.com/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.endianness.com/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.endianness.com/termux/termux-x11 x11 main`     |
+| Repository                                             | sources.list entry                                                   |
+|:-------------------------------------------------------|:---------------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.middlendian.com/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.middlendian.com/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.middlendian.com/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [Grimler](https://github.com/grimler91)
 
