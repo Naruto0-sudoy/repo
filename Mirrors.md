@@ -493,6 +493,16 @@ This mirror is hosted in Mumbai, India, updated every 30 minutes, 500Mbp/s and s
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://termux.niranjan.co/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://termux.niranjan.co/termux-x11 x11 main`     |
 
+#### Mirrors by [Ravi](https://ravidwivedi.in/)
+
+This mirror is hosted in Mumbai, India, updated every 1 hour, 200MB/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                       |
+|:-------------------------------------------------------|:---------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.ravidwivedi.in/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.ravidwivedi.in/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.ravidwivedi.in/termux/termux-x11 x11 main`     |
+
 ## Mirrors hosted in Russia
 
 Mirrors for users in Russia for better ping and download speed.
