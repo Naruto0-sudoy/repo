@@ -221,15 +221,16 @@ Currently cache directory is primarily used for packages cache files of package 
 
 ## File Path Limits
 
-To choose the max file path length limits requires considering the limitations of Linux/Android. Linux assumes rootfs is at `/`, but for Termux, the rootfs directory needs to be under the app data directory path that android assigns the app, and hence it causes problems for linux system calls where buffer lengths are limited. Using [`PATH_MAX`](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:bionic/libc/kernel/uapi/linux/limits.h;l=28) (`4096`) that is [defined by POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/limits.h.html) is not possible for every Linux API.
+To choose the max file path length limits requires considering the limitations of Linux/Android, and their [`syscalls(2)`](https://man7.org/linux/man-pages/man2/syscalls.2.html). Linux assumes rootfs is at `/`, but for Termux, the rootfs directory needs to be under the app data directory path that android assigns the app, and hence it causes problems for linux system calls where buffer lengths are limited. Using [`PATH_MAX`](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:bionic/libc/kernel/uapi/linux/limits.h;l=28) (`4096`) that is [defined by POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/limits.h.html) is not possible for every Linux API.
 
 The Termux apps and rootfs directory paths depends on:
 
-- App data directory paths on Android are normally under `/data/data/<package_name>` for user `0`, or under `/data/user/<user_id>/<package_name>` or `/mnt/expand/<volume_uuid>/user/<user_id>/<package_name>` for secondary users. The `/mnt/expand` path is for apps installed on adoptable storage volumes, like external sd cards.
+- [Termux Private App Data Directory](#termux-private-app-data-directory) paths on Android are normally under `/data/data/<package_name>` for user `0`, or under `/data/user/<user_id>/<package_name>` or `/mnt/expand/<volume_uuid>/user/<user_id>/<package_name>` for secondary users. The `/mnt/expand` path is for apps installed on [adoptable storage](https://source.android.com/docs/core/storage/adoptable) volumes, like external sd cards.
 - The `package_name` on Android can be max `255` characters due to `ext4` filesystem limit as per [`NAME_MAX`](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:bionic/libc/kernel/uapi/linux/limits.h;l=27) that is [defined by POSIX](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/limits.h.html). ([1](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:frameworks/base/core/java/android/content/pm/PackageParser.java;l=1601), [2](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:frameworks/base/core/java/android/os/FileUtils.java;l=991), [3](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=2757))
 - The `volume_uuid` for an `/mnt/expand` path is equal to `36` characters in the format `VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV`.
-- A `user_id` can have a max `1000` value, so will use max `4` characters. ([1](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:bionic/libc/bionic/grp_pwd.cpp;l=351), [2](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:system/core/libcutils/multiuser.cpp;l=29)) For the primary user the value is `0` and for secondary users it is `>= 10`. Since only `1-10` users are allowed to be created normally, based on max of `fw.max_users` property or `config_multiuserMaximumUsers` config (`pm get-max-users`), this should only use 2 characters. ([1](https://source.android.com/docs/devices/admin/multi-user#applying_the_overlay), [2](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:frameworks/base/core/res/res/values/config.xml;l=2802), [3](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:frameworks/base/core/java/android/os/UserManager.java;l=5719))
-- An app will normally put rootfs under a subdirectory of the app data directory. For Termux, this is currently the `files` (`5`) directory, but there are plans to move it to `termux/rootfs/II` (`16`) in future where `II` refers to rootfs id starting at `0` for multi-rootfs support. Termux forks may use a different path, so length may be lesser or higher.
+- The `user_id` refers to the id for the [user](https://source.android.com/docs/devices/admin/multi-user) in which an app is installed and running. The default/primary user id is `0`. The ids for secondary users and profiles start at id `10`. A `user_id` can have a max `1000` value, so should use max `4` characters. ([1](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:bionic/libc/bionic/grp_pwd.cpp;l=351), [2](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:system/core/libcutils/multiuser.cpp;l=29)) Since only `1-10` users are allowed to be created normally, based on the `fw.max_users` property or `config_multiuserMaximumUsers` config (`pm get-max-users`), so user id should only use 2 characters normally. ([1](https://source.android.com/docs/devices/admin/multi-user#applying_the_overlay), [2](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:frameworks/base/core/res/res/values/config.xml;l=2802), [3](https://cs.android.com/android/platform/superproject/+/android-14.0.0_r1:frameworks/base/core/java/android/os/UserManager.java;l=5719))
+- An app will normally put rootfs (`TERMUX__ROOTFS`) under a subdirectory of the app data directory. For Termux, this is currently the `files` (`5`) sub directory at `/data/data/com.termux/files`, but there are plans to move it to `termux/rootfs/II` (`16`) in future where `II` refers to rootfs id starting at `0` for multi-rootfs support. Termux forks may use a different path, so length may be lesser or higher.
+- The uid (`id -u`) for app processes used for `TERMUX__APPS_DIR_BY_UID` are calculated as per `user_id * AID_USER_OFFSET + AID_APP_START + app_id`, where `AID_USER_OFFSET=100000` (offset for uid ranges for each user), `AID_APP_START=10000` (first app user) and `AID_APP_END=19999` (last app user) as documented in the [Termux Private App Data Directory](#termux-private-app-data-directory) section. The `uid` max length is limited to `TERMUX__APPS_APP_UID_MAX_LEN` (`9`) characters.
 
 &nbsp;
 
@@ -244,20 +245,24 @@ The path length of Termux apps and rootfs directory may cause the following prob
 Based on the above limitations and examples below, the following limits are chosen. **The limits are defined by [`properties.sh`](https://github.com/termux/termux-packages/blob/master/scripts/properties.sh) in `termux-packages`, [`TermuxCoreConstants`](https://github.com/termux/termux-app/blob/master/termux-shared/src/main/java/com/termux/shared/termux/core/TermuxCoreConstants.java) in `termux-app` and [`termux_files.h`](https://github.com/termux/termux-exec/blob/master/src/termux/termux_files.h) in `termux-exec`.**
 
 ```shell
+TERMUX__INTERNAL_NAME_MAX_LEN=7
 TERMUX__APPS_DIR_MAX_LEN=84
 TERMUX__APPS_APP_IDENTIFIER_MAX_LEN=11
+TERMUX__APPS_APP_UID_MAX_LEN=9
 TERMUX__ROOTFS_DIR_MAX_LEN=86
 TERMUX__UNIX_PATH_MAX=108
 ```
 
-For compiling Termux packages for `/data/data` or `/data/data/UU` paths, **ideally package name should be `<= 21` characters** and max `33` characters. If you have not yet chosen a package name, then it would be **best to keep it to `<= 10` characters**.
+For compiling Termux packages for `/data/data` or `/data/data/UU` paths, **ideally package name should be `<= 21` characters** and max `33` characters. If package name has not yet been chosen, then it would be **best to keep it to `<= 10` characters**.
 For compiling Termux packages for `/mnt/expand` paths or if it may be supported in future, keep package name at max `11` characters, but even that will only give `13` characters for a filesystem socket sub path under `$TMPDIR` and would require patching patches if a longer sub paths are used.
+
+The max length `TERMUX__INTERNAL_NAME_MAX_LEN` for `TERMUX__INTERNAL_NAME` is chosen as `7` based on the max recommended package name length minus the common domain name TLD suffix length of `4` (like `.dev`, `.com`, etc).
 
 **If filesystem socket functionality is required for Termux apps, then Termux apps directory path length should be `<= 83` and if required for Termux packages, then Termux rootfs directory path length should be `<= 85`.**
 
-The `TERMUX__APPS_DIR_MAX_LEN` is chosen as `84` based on the `12`, `13`, `14`, `16`, `17` and `18` examples below, which allow multiple unique filesystem sockets under apps directory for each unique app as long as apps directory length `<= 83`.
+The max length `TERMUX__APPS_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX__APPS_DIR_BY_IDENTIFIER` and `TERMUX__APPS_DIR_BY_UID` is chosen as `84` based on the `12`, `14`, `16` and `19` examples below, which allow multiple unique filesystem sockets under apps directory for each unique app as long as apps directory length `<= 83`.
 
-The `TERMUX__ROOTFS_DIR_MAX_LEN` is chosen as `86` based on the `37` and `41` examples below, which allow multiple unique filesystem sockets under `$TMPDIR` for each unique program as long as rootfs directory length `<= 85`, but would require patching patches that use longer paths under `$TMPDIR`.
+The max length `TERMUX__ROOTFS_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX__ROOTFS` is chosen as `86` based on the `37` and `41` examples below, which allow multiple unique filesystem sockets under `$TMPDIR` for each unique program as long as rootfs directory length `<= 85`, but would require patching patches that use longer paths under `$TMPDIR`.
 
 
 &nbsp;
@@ -267,40 +272,40 @@ In the following examples:
 - `U` refers to user id.
 - `P` refers to Termux app package name.
 - `I` refers to Termux rootfs id.
-- `G` refers to plugin app package name that may call Termux app APIs.
 - `N` refers to Termux app or plugin app identifier name limited to `TERMUX__APPS_APP_IDENTIFIER_MAX_LEN` (`11`) characters. For example `termux-xxxx`.
+- `A` refers to Termux app or plugin app uid (user_id + app_id) (`id -u`) limited to `TERMUX__APPS_APP_UID_MAX_LEN` (`9`) characters. For example `10160` or `100010160`.
 - `D` refers to a unique directory identifier template, like generated with [`mkstemp`](https://man7.org/linux/man-pages/man3/mkstemp.3.html) that requires minimum 6 `X` characters as template.
 - `X` refers to a unique filename identifier template, like generated with [`mkstemp`](https://man7.org/linux/man-pages/man3/mkstemp.3.html) that requires minimum 6 `X` characters as template.
 - `S` refers to a sub path.
-- `/termux` refers to `TERMUX__ROOT_DIR` whose directory name with length `6` characters.
-- `/termux/apps/n` refers to `TERMUX__APPS_DIR_BY_NAME` that are created for each app based on unique app identifier.
-- `/termux/apps/p` refers to `TERMUX__APPS_DIR_BY_PACKAGE` that creates directories for each app based on package names or randomly generated unique identifier.
+- `*/termux` refers to `TERMUX__PROJECT_DIR` whose directory basename is set to `TERMUX__INTERNAL_NAME` and is limited to `TERMUX__INTERNAL_NAME_MAX_LEN` (`7`) characters (and currently has length `6`).
+- `*/termux/apps/i` refers to `TERMUX__APPS_DIR_BY_IDENTIFIER` that are created for each app based on a unique app identifier.
+- `*/termux/apps/u` refers to `TERMUX__APPS_DIR_BY_UID` that creates directories for each app based on its unique app uid (user_id + app_id) assigned to it by Android at install time.
 - `t` in `tXXXXXX` refers to type of socket, it may be `i` for a input socket and `o` for an output socket that belong to the same API call.
 
 ```shell
 ##### Apps filesystem sockets
 
-1.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=82`,`package_name=35`)
-2.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/s/tXXXXXX` (`path=82`,`package_name=35`)
-3.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/p/GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG/s/tXXXXXX` (`path=107`,`package_name=35`,`plugin_package_name=36`)
-4.  `/data/data/PPPPPPPPPPPPPPPPPPPPP/termux/apps/p/GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG/s/tXXXXXX` (`path=107`,`package_name=21`,`plugin_package_name=50`)
-5.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=60`)
-6.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=60`)
-7.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/p/DDDDDD/s/tXXXXXX` (`path=107`,`package_name=65`)
+1.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=82`,`package_name=35`)
+2.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=82`,`package_name=35`)
+3.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=80`,`package_name=35`)
+5.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=60`)
+6.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=60`)
+4.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=62`)
+7.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=60`)
 
-8.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=85`,`package_name=35`)
-9.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/s/tXXXXXX` (`path=85`,`package_name=35`)
-10. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/p/GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG/s/tXXXXXX` (`path=107`,`package_name=33`,`plugin_package_name=35`)
-11. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPP/termux/apps/p/GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG/s/tXXXXXX` (`path=107`,`package_name=21`,`plugin_package_name=47`)
-12. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=57`)
-13. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=57`)
-14. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/p/DDDDDD/s/tXXXXXX` (`path=107`,`package_name=62`)
+8.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=85`,`package_name=35`)
+9.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=85`,`package_name=35`)
+10. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=85`,`package_name=37`)
+12. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=57`)
+13. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=57`)
+11. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=59`)
+14. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=55`)
 
-15. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=128`,`package_name=35`) (**invalid**)
-16. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=14`)
-17. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/n/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=14`)
-18. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPP/termux/apps/p/GGGGGGGGGGGGGGG/s/tXXXXXX` (`path=107`,`package_name=10`,`plugin_package_name=15`)
-19. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPPPPP/termux/apps/p/DDDDDD/s/tXXXXXX` (`path=107`,`package_name=19`)
+15. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=128`,`package_name=35`) (**invalid**)
+16. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=14`)
+17. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=14`)
+18. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=16`)
+19. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=12`)
 
 
 
