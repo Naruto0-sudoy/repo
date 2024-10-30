@@ -1,20 +1,73 @@
-## General requirements
+# Package Build Config
 
-- No operations requiring root privileges.
+### Contents
 
-- No operations modifying files outside of build directory or `$TERMUX_PREFIX`.
+- [Requirements](#requirements)
+- [Package Build Script](#package-build-script)
+  - [Package Build Script Variables](#package-build-script-variables)
+  - [Package Build Step Overrides](#package-build-step-overrides)
+  - [Package Build Source URLs](#package-build-source-urls)
+- [Subpackage Build Script](#subpackage-build-script)
+  - [Subpackage Build Script Variables](#subpackage-build-script-variables)
+  - [Subpackage Dependencies](#subpackage-dependencies)
+ [Reserved Package Build Variables](#reserved-package-build-variables)
 
+---
+
+&nbsp;
+
+
+
+
+
+## Requirements
+
+The following requirements exist for packages that need to be built with the `termux-package` build infrastructure and to added to the list of supported packages.
+
+- No operations requiring `root` privileges.
+- No operations modifying files outside of build directory or `$TERMUX__PREFIX`.
 - All scripts must be formatted according [Coding guideline](./Coding-guideline).
 
-## Writing a package script
+---
 
-Package script (`build.sh`) is a Bash script that contains definitions for
-metadata and (if needed) instructions for Termux build system how to build the
-package. Such script is internally [used](./Building-packages#understanding-build-process)
-by `./build-package.sh` and is not standalone.
+&nbsp;
 
-Example of minimal working package build script:
-```
+
+
+
+
+## Package Build Script
+
+Package build script (`build.sh`) is a [`bash`](https://www.gnu.org/software/bash) script that contains definitions for variables/metadata and (if needed) instructions for Termux build system on how to build the package. Such scripts are internally [used](./Building-packages#build-process) by the [`build-package.sh`] script and are not standalone.
+
+The `build.sh` file for a package exist under the `<repo_channel>/<package_name>` directory in the `termux-packages` repo root directory where `repo_channel` refers to the repository `channel` of the package, whose directory is specified in the [`repo.json`](https://github.com/termux/termux-packages/blob/master/repo.json) file.
+
+Termux packages repository hosted on https://packages.termux.dev provides all of its packages in different repository `channels`. A repository `channel` is simply a location which holds packages of similar types, which can be downloaded and installed using a package manager, and each channel has a different purpose. A package can only exist in one repository channel. There are currently `3` repository channels. By default, only packages from the `main` channel can be installed. To install packages from other channels, then that can be set up by installing their respective `channel setup package` provided by the `main` channel, which automatically adds the channel to the `sources.list`.
+
+- `main` channel:  
+  - Purpose: Packages that can be run in the Terminal and have no special requirements.  
+  - Package sources: https://github.com/termux/termux-packages/tree/master/packages  
+  - Package builds: https://packages.termux.dev/apt/termux-main  
+- `root` channel:  
+  - Purpose: Packages that require Termux app to be granted `root` access.  
+  - Package sources: https://github.com/termux/termux-packages/tree/master/root-packages  
+  - Package builds: https://packages.termux.dev/apt/termux-root  
+  - Channel setup package: [`root-repo`](https://github.com/termux/termux-packages/blob/master/packages/root-repo/build.sh)  
+- `x11` channel:  
+  - Purpose: Packages related to [`X11`](https://en.wikipedia.org/wiki/X_Window_System) and their libraries that require a GUI.  
+  - Package sources: https://github.com/termux/termux-packages/tree/master/x11-packages  
+  - Package builds: https://packages.termux.dev/apt/termux-x11  
+  - Channel setup package: [`x11-repo`](https://github.com/termux/termux-packages/blob/master/packages/x11-repo/build.sh)  
+
+For example, for a package named `foo`, the following package `build.sh` source paths may be used.
+
+- `main` channel: `packages/foo/build.sh`
+- `root` channel: `root-packages/foo/build.sh`
+- `x11` channel: `x11-packages/foo/build.sh`
+
+Following is an example of a minimal working package build script.
+
+```shell
 # http(s) link to package home page.
 TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/ed/
 
@@ -25,11 +78,14 @@ TERMUX_PKG_DESCRIPTION="Classic UNIX line editor"
 # Use SPDX identifier: https://spdx.org/licenses/
 TERMUX_PKG_LICENSE="GPL-2.0"
 
-# Who cares about package.
+# Who maintains the package.
 # Specify yourself (Github nick, or name + email) if you wish to maintain the
 # package, fix its bugs, etc. Otherwise specify "@termux".
 # Please note that unofficial repositories are not allowed to reference @termux
 # as their maintainer.
+# See also:
+# - https://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-maintainer
+# - https://www.debian.org/doc/debian-policy/ch-binary.html#s-maintainer
 TERMUX_PKG_MAINTAINER="@termux"
 
 # Version.
@@ -41,28 +97,26 @@ TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/ed/ed-${TERMUX_PKG_VERSION}.tar
 # SHA-256 checksum of the source code archive.
 TERMUX_PKG_SHA256=ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174
 ```
-Note that order of fields like shown above is preferred. In example above also
-no build step overrides as expected that internal ones are enough to successfully
-build the package.
+Note that order of fields like shown above is preferred. In the above example there are no build step overrides as the default ones are enough to successfully build the package.
 
-`./build-package.sh` can automatically detect following build systems:
+[`build-package.sh`] can automatically detect following build systems:
 
 - Autotools
-
 - CMake
-
 - Meson
-
 - Haskell (or cabal)
 
 **NOTE:** If packaging Haskell packages also see [this](./Haskell-package-guidelines).
 
-If you need to pass some additional arguments, use the field
-`TERMUX_PKG_EXTRA_CONFIGURE_ARGS`.
+To pass some additional arguments, use the field `TERMUX_PKG_EXTRA_CONFIGURE_ARGS`.
 
-Also, see [this](./Auto-updating-packages) to enable automatic updates for package.
+See also [Auto updating packages](./Auto-updating-packages).
 
-### Table of available package control fields
+## &nbsp;
+
+
+
+### Package Build Script Variables
 
 | Order | Variable | Required | Description |
 | -----:|:-------- |:--------:|:----------- |
@@ -89,7 +143,7 @@ Also, see [this](./Auto-updating-packages) to enable automatic updates for packa
 | 21    | `TERMUX_PKG_SUGGESTS` | no | Comma-separated list of packages that are related to or enhance the current one. |
 | 22    | `TERMUX_PKG_ESSENTIAL` | no | Whether to treat package as essential which cannot be uninstalled in usual way. Default is **false**. |
 | 23    | `TERMUX_PKG_NO_STATICSPLIT` | no | Whether to split static libraries into a subpackage. Default is **false**. |
-| 24    | `TERMUX_PKG_STATICSPLIT_EXTRA_PATTERNS` | no | Extra patterns to include in static package. It must be relative to `$TERMUX_PREFIX`. For example: to include `*.h` files from `$TERMUX_PREFIX/lib`, specify `lib/*.h`. You can use bash globstar patterns to recurse sub-directories. |
+| 24    | `TERMUX_PKG_STATICSPLIT_EXTRA_PATTERNS` | no | Extra patterns to include in static package. It must be relative to `$TERMUX__PREFIX`. For example: to include `*.h` files from `$TERMUX__PREFIX/lib`, specify `lib/*.h`. Use bash globstar patterns to recurse sub-directories. |
 | 25    | `TERMUX_PKG_IS_HASKELL_LIB` | no | Whether the package is haskell library. Default is `false`. |
 | 26    | `TERMUX_PKG_BUILD_IN_SRC` | no | Whether to perform build in a source code directory. Default is **false**. |
 | 27    | `TERMUX_PKG_HAS_DEBUG` | no | Whether debug builds are possible for package. Default is **true**. |
@@ -106,14 +160,18 @@ Also, see [this](./Auto-updating-packages) to enable automatic updates for packa
 | 38    | `TERMUX_PKG_SERVICE_SCRIPT` | no | Array of even length containing daemon name(s) and script(s) for use with [termux-services/runit](https://wiki.termux.com/wiki/Termux-services). |
 | 39    | `TERMUX_PKG_GO_USE_OLDER` | no | Use the older supported release of Go (1.19.7). Default is **false**. |
 | 40    | `TERMUX_PKG_NO_STRIP` | no | Disable stripping binaries. Default is **false**. |
-| 41    | `TERMUX_PKG_NO_SHEBANG_FIX` | no | Skip fixing shebang accordingly to $TERMUX_PREFIX. Default is **false**. |
+| 41    | `TERMUX_PKG_NO_SHEBANG_FIX` | no | Skip fixing shebang accordingly to $TERMUX__PREFIX. Default is **false**. |
 | 42    | `TERMUX_PKG_NO_ELF_CLEANER` | no | Disable running of termux-elf-cleaner on built binaries. Default is **false**. |
 | 43    | `TERMUX_PKG_NO_STRIP` | no | Disable stripping binaries. Default is **false**. |
+| 44    | `TERMUX_PKG_ON_DEVICE_BUILD_NOT_SUPPORTED` | no | Whether this package does not support compilation on a device. Default is **false**. |
 
-### Table of available build step overrides
+## &nbsp;
 
-Complete reference for all build steps can be found in
-[Building packages](./Building-packages#build-steps-reference).
+
+
+### Package Build Step Overrides
+
+Following is a list of package build steps that can be overridden by the `build.sh` script. Complete reference for all build steps can be found in [Building packages](./Building-packages#build-steps-reference).
 
 | Execution order | Function name | Description |
 | ---------------:|:-------------:|:----------- |
@@ -129,37 +187,99 @@ Complete reference for all build steps can be found in
 | 10              | `termux_step_post_make_install` | Hook to run commands immediately after installation. |
 | 11              | `termux_step_install_license` | Link or copy package-specific LICENSE to `./share/doc/$TERMUX_PKG_NAME`. |
 | 12              | `termux_step_post_massage` | Final hook before creating `*.deb` file(s). |
-| 13              | `termux_step_create_debscripts` | In this step you can create ./preinst, ./postinst, ./prerm or ./postrm scripts which will be executed during the package installation or removing. |
+| 13              | `termux_step_create_debscripts` | In this step the `./preinst`, `./postinst`, `./prerm` or `./postrm` scripts can be created which will be executed during the package installation or removing. |
 
-## Writing a subpackage script
+## &nbsp;
 
-Subpackage definitions are often used to move optional parts of installation to
-a separate packages. For example, some libraries come with utilities which may
-not be used by end user. Thus we can move these utilities to a separate package
-and reduce installation size in case when library package was installed as
-dependency.
+
+
+### Package Build Source URLs
+
+The `$TERMUX_PKG_SRCURL` in the `build.sh` file defines the URL for where to download the package source. It can either be a remote `*https://*` URL or a local `*file://*` URL.
+
+
+#### Package Build Remote Source URLs
+
+Remote package source URLs are in the `*https://domain/path` format where `https://` is the [scheme](https://en.wikipedia.org/wiki/File_URI_scheme).
+
+The [`build-package.sh`] scripts support `2` formats for remote `https://` URLs, and both have their own build time behaviour.
+
+- **`https://domain/path` URL** for package source release `tar`/`zip` file.  
+    - When the build is started for the package, the source file will be downloaded if not already download and its checksum will be compared against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file, unless its set to `SKIP_CHECKSUM`. If checksum does not match, then build with fail with a `Wrong checksum` error.
+    - If package is being rebuilt and `$TERMUX_PKG_SHA256` is not set to `SKIP_CHECKSUM`, like with the [`-f`]/[`-F`] flags and source file already exists, then checksum will be checked again against the already downloaded file, and if it does not match, then package source will be re-downloaded and checksum re-checked. However, if checksum matches against the existing local file, then it will be used without downloading source again.  
+    - If package is being rebuilt and `$TERMUX_PKG_SHA256` is set to `SKIP_CHECKSUM`, then package source will be re-downloaded every time and no checksum will be checked.  
+    - Any value for the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package will be ignored.  
+
+- **`git+https://*.git` URL** for package remote [`git`] source repository.  
+    - The URL path should end with `.git` and host a remote `git` repository. ([1](https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols), [2](https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server))  
+    - If a branch is set in the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package, it will be checked out before building.  
+    - If the source directory has been cloned already in a previous build, then it will **NOT be cloned again**, even if [`-f`]/[`-F`] flags are passed for rebuilds, and the **[`-r`] flag WILL be required** to clone the latest sources again/every time.  
+
+&nbsp;
+
+#### Package Build Local Source URLs
+
+Local package source URLs are in the `*file:///path/to/source*` formats where `file://` is the [scheme](https://en.wikipedia.org/wiki/File_URI_scheme) and the `/path` is an absolute and normalized path to a directory or file on the local filesystem. **Note that 3 forward slashes `/` are necessary and `file://path` is not a valid URL.** The path must also be normalized with no duplicate or trailing path separators `/`.
+
+The [`build-package.sh`] scripts support `3` formats for local `file://` URLs, and they all have their own build time behaviour.
+
+- **`file:///path/to/source/dir` URL** for path to a source directory, which may or may not be a `git` repository.  
+    - When the build is started for the package, a `tar` file will be created from the source directory for its current state and it will be used as is.  
+    - If the source directory is a `git` directory, no changes will be made to any `git` branches/tags. Any value for the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package will be ignored and it will have to manually checkout out. **Any uncommitted changes to current `git` branch WILL also get built.**  
+    - No checksum checks will be done against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file, and a **`tar` file for the source directory will be created every time package is built**, assuming [`-f`]/[`-F`] flags are passed for rebuilds, and the **[`-r`] flag WILL not be required** to re-download updated sources. To avoid confusion, the `$TERMUX_PKG_SHA256` variable should be set to an empty string or `SKIP_CHECKSUM`.  
+
+- **`file:///path/to/source/file` URL** for path to a source file, like a `tar` or `zip` file.  
+    - When the build is started for the package, the source file will be downloaded if not already download and its checksum will be compared against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file, unless its set to `SKIP_CHECKSUM`. If checksum does not match, then build with fail with a `Wrong checksum` error.  
+    - If package is being rebuilt and `$TERMUX_PKG_SHA256` is not set to `SKIP_CHECKSUM`, like with the [`-f`]/[`-F`] flags and source file already exists, then checksum will be checked again against the already downloaded file, and if it does not match, then package source will be re-downloaded and checksum re-checked. However, if checksum matches against the existing local file, then it will be used without downloading source again.  
+    - If package is being rebuilt and `$TERMUX_PKG_SHA256` is set to `SKIP_CHECKSUM`, then package source will be re-downloaded every time and no checksum will be checked.
+    - Any value for the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package will be ignored.  
+
+- **`git+file:///path/to/source/git/dir` URL** path to a [local](https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols) [`git`] source directory where `git+` is prefixed before `file://`, and the directory must contain a `.git` sub directory.  
+    - The directory path does not need to end with `.git`.  
+    - If a branch is set in the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package, it will be checked out before building. **Any uncommitted changes to the `git` branch WILL NOT get built.**  
+    - If the source directory has been cloned already in a previous build, then it will **NOT be cloned again**, even if [`-f`]/[`-F`] flags are passed for rebuilds, and the **[`-r`] flag WILL be required** to clone the latest sources again/every time.  
+    - An additional requirement is that the local [`git`] repository must have its `origin` url in `.git/config` as a `https` URL instead of a `ssh` (`git@`) URL if running in [`termux-packages` docker container]  and `$TERMUX_PKG_GIT_BRANCH` is set, as it doesn't have `ssh` installed by default and `git fetch` while downloading sources would fail otherwise. So if a local `git` repository needs to be cloned from an upstream `git` URL itself, like GitHub, then use `https://github.com/org/repo.git` to clone instead of `git@github.com:org/repo.git`. Or `ssh` can be installed inside the docker container and `ssh` keys set up manually.  
+    - No checksum checks will be done against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file. To avoid confusion, the `$TERMUX_PKG_SHA256` variable should be set to an empty string or `SKIP_CHECKSUM`.  
+
+---
+
+&nbsp;
+
+
+
+
+
+## Subpackage Build Script
+
+Subpackage definitions are often used to move optional parts of installation to a separate packages. For example, some libraries come with utilities which may not be used by end user. Thus we can move these utilities to a separate package and reduce installation size in case when library package was installed as dependency.
 
 Minimal subpackage script consist of the following fields:
-```
+
+```shell
 TERMUX_SUBPKG_DESCRIPTION= # Sub-package description
 TERMUX_SUBPKG_INCLUDE="" # List of files (either space or newline separated) to include in subpackage
 ```
+
 Order above is preferred as include list may be long.
 
-Subpackage script must be located in same directory as `build.sh` and have file
-name in the following format:
-```
+Subpackage script must be located in same directory as `build.sh` and have file name in the following format:
+
+```shell
 {subpackage name}.subpackage.sh
 ```
+
 Note that its name cannot be same as of parent package.
 
 Additional notes about subpackages:
 
 - Subpackages always have version equal to parent package.
-
 - Subpackages for static libraries are created automatically.
 
-### Table of available subpackage control fields
+## &nbsp;
+
+
+
+### Subpackage Build Script Variables
 
 | Order | Variable | Required | Description |
 | -----:|:-------- |:--------:|:----------- |
@@ -174,23 +294,30 @@ Additional notes about subpackages:
 | 9     | `TERMUX_SUBPKG_INCLUDE` | yes | A space or newline separated list of files to be included in subpackage. |
 | 10    | `TERMUX_SUBPKG_CONFFILES` | no | A space or newline separated list of package configuration files that should not be overwritten on update. |
 
-#### Subpackage dependencies
+## &nbsp;
 
-By default subpackage depends only on parent package with current version. This
-behaviour can be changed by setting variable `TERMUX_SUBPKG_DEPEND_ON_PARENT`.
+
+
+### Subpackage Dependencies
+
+By default subpackage depends only on parent package with current version. This behaviour can be changed by setting variable `$TERMUX_SUBPKG_DEPEND_ON_PARENT`.
 
 Allowed values are:
 
 - `deps` - subpackage will depend on dependencies of parent package.
+- `unversioned` - subpackage will depend on parent package without specified version.
 
-- `unversioned` - subpackage will depend on parent package without specified
-  version.
+---
 
-## Reserved variables in package scripts
+&nbsp;
 
-Among with variables listed above (i.e. control fields), certain variables have
-special purpose and used internally by `./build-package.sh`. They should not
-be modified in runtime unless there is a good reason.
+
+
+
+
+## Reserved Package Build Variables
+
+Among with variables listed above (i.e. control fields), certain variables have special purpose and used internally by [`build-package.sh`]. They should not be modified in runtime unless there is a good reason.
 
 - `TERMUX_ON_DEVICE_BUILD` - If set, assume that building on device.
 
@@ -202,37 +329,45 @@ be modified in runtime unless there is a good reason.
 
 - `TERMUX_PKG_BUILDDIR` - Path to build directory of current package.
 
-- `TERMUX_PKG_BUILDER_DIR` - Path to directory where located `build.sh` of
-  current package.
+- `TERMUX_PKG_BUILDER_DIR` - Path to directory where located `build.sh` of current package.
 
 - `TERMUX_PKG_BUILDER_SCRIPT` - Path to `build.sh` of current package.
 
 - `TERMUX_PKG_CACHEDIR` - Path to source cache directory of current package.
 
-- `TERMUX_PKG_MASSAGEDIR` - Path to directory where package content will be
-  extracted from `$TERMUX_PREFIX`.
+- `TERMUX_PKG_MASSAGEDIR` - Path to directory where package content will be extracted from `$TERMUX__PREFIX`.
 
-- `TERMUX_PKG_PACKAGEDIR` - Path to directory where components of `*.deb` archive
-  of current package will be created.
+- `TERMUX_PKG_PACKAGEDIR` - Path to directory where components of `*.deb` archive of current package will be created.
 
 - `TERMUX_PKG_SRCDIR` - Path to source directory of current package.
 
 - `TERMUX_PKG_TMPDIR` - Path to temporary directory specific for current package.
 
-- `TERMUX_COMMON_CACHEDIR` - Path to global cache directory where build tools
-  are stored.
+- `TERMUX_COMMON_CACHEDIR` - Path to global cache directory where build tools are stored.
 
 - `TERMUX_SCRIPTDIR` - Path to directory with utility scripts.
 
 - `TERMUX_PKG_NAME` - Name of current package.
 
-- `TERMUX_REPO_URL` - Array of APT repository URLs from which dependencies will
-  be downloaded if `./build-package.sh` got option `-i` or `-I`.
+- `TERMUX_REPO_URL` - Array of package repository URLs from which dependencies will be downloaded if [`build-package.sh`] got option `-i` or `-I`.
 
-- `TERMUX_REPO_DISTRIBUTION` - Array of distribution names in addition for
-  `TERMUX_REPO_URL`.
+- `TERMUX_REPO_DISTRIBUTION` - Array of distribution names in addition for `$TERMUX_REPO_URL`.
 
-- `TERMUX_REPO_COMPONENT` - Array of repository component names in addition for
-  `TERMUX_REPO_URL`.
+- `TERMUX_REPO_COMPONENT` - Array of repository component names in addition for `$TERMUX_REPO_URL`.
 
 - `TERMUX_PACKAGE_FORMAT` - Package output format.
+
+---
+
+&nbsp;
+
+
+
+
+
+[`-f`]: ./Building-packages#-f
+[`-F`]: ./Building-packages#-f-1
+[`-r`]: ./Building-packages#-r
+[`build-package.sh`]: https://github.com/termux/termux-packages/blob/master/build-package.sh
+[`git`]: https://git-scm.com/docs/git
+[`termux-packages` docker container]: ./Build-environment#docker-container

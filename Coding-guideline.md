@@ -2,10 +2,6 @@
 
 - Files must be encoded in UTF-8 and do not have executable permission.
 
-- Names of the Markdown documents should be capitalised (except for Github Wiki).
-
-- All Markdown should be edited on alternate line.
-
 - Page headers should be indented with hashes (`#`) rather than equal signs (`=`).
 
 - Bullet lists should be indented with hyphens (`-`).
@@ -15,10 +11,6 @@
 - Use `inline code formatting` for file names unless they are links.
 
 - All code blocks should be enclosed in backticks, with language specified.
-
-- Avoid trailing spaces and tabs.
-
-- Lines shouldn't be longer than 80 characters.
 
 - Use spaces for indentation to keep documents readable in plain text format.
 
