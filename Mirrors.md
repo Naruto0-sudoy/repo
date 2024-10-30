@@ -86,18 +86,6 @@ Hosted in Chisinau, Moldova. Updated once per 6 hours. 10Gb/s and support IPV4/I
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://md.mirrors.hacktegic.com/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://md.mirrors.hacktegic.com/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [Astra ISP](https://astra.in.ua/)
-
-**Not recommended for use, outdated.**
-
-~~Updated once per 4 hours.~~ Repository snapshot as of: `Mon, 30 Oct 2023 18:45:52 UTC`
-
-| Repository                                             | sources.list entry                                           |
-|:-------------------------------------------------------|:-------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://termux.astra.in.ua/apt/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://termux.astra.in.ua/apt/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://termux.astra.in.ua/apt/termux-x11 x11 main`     |
-
 #### Mirrors by [Dev-Nergis](https://github.com/Dev-Nergis)
 
 Hosted in Seoul, South Korea. Updated every 6 hours. 1Gb/s and support IPV4/IPV6.
