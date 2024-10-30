@@ -54,7 +54,7 @@ Following is a list of files and directories inside the `termux-packages` repo r
 The `termux-packages` build environment can be setup through the following way. Once the build environment has been setup, the packages can be built, **check [`Building-Packages`](#Building-packages) docs for info on how to build packages.**
 
 - [Docker Container](#docker-container) (**recommended**)
-- [VirtualBox VM](#virtual-box-vm)
+- [VirtualBox VM](#virtualbox-vm)
 - [Host OS](#host-os)
 - [Termux App](#termux-app)
 
@@ -62,7 +62,7 @@ The `termux-packages` build environment can be setup through the following way. 
 
 **Using official Docker image is the recommended way for building Termux packages** which ensures that the build environment is the same as Termux maintainers and therefore builds are reproducible.
 
-If `docker` has been [installed](https://docs.docker.com/engine/install/) and running, then launching a build environment should be as simple as running following, which will automatically create a docker container if it does not exist with the name `termux-package-builder`  by default for the `ghcr.io/termux/package-builder` image ([1](https://github.com/termux/termux-packages/pkgs/container/package-builder), [2](https://hub.docker.com/r/termux/package-builder)). **See also [Multiple Containers](multiple-containers) section.**
+If `docker` has been [installed](https://docs.docker.com/engine/install/) and running, then launching a build environment should be as simple as running following, which will automatically create a docker container if it does not exist with the name `termux-package-builder`  by default for the `ghcr.io/termux/package-builder` image ([1](https://github.com/termux/termux-packages/pkgs/container/package-builder), [2](https://hub.docker.com/r/termux/package-builder)). **See also [Multiple Containers](#multiple-containers) section.**
 
 ```shell
 ./scripts/run-docker.sh
