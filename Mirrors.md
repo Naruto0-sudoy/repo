@@ -106,6 +106,16 @@ Hosted in Gwangju, South Korea. Updated every one hour. 1Gb/s and support IPV4 o
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.jeonnam.school/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.jeonnam.school/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [Bombyeol](https://github.com/Senarin)
+
+Hosted in Daegu, South Korea. Updated every 4 hours. 1Gb/s and support IPV4 only.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.rinarin.dev/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.rinarin.dev/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.rinarin.dev/termux/termux-x11 x11 main`     |
+
 #### Mirrors by [DomaiNesia](https://www.domainesia.com/) - Cloud Web Hosting Indonesia Terbaik
 
 Hosted in Jakarta, Indonesia. Updated four times per day.
