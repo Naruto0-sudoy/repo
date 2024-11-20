@@ -108,7 +108,7 @@ Hosted in Gwangju, South Korea. Updated every one hour. 1Gb/s and support IPV4 o
 
 #### Mirrors by [Bombyeol](https://github.com/Senarin)
 
-Hosted in Daegu, South Korea. Updated every 4 hours. 1Gb/s and support IPV4 only.
+Hosted in Daegu, South Korea. Updated every 4 hours. 1Gb/s and support IPV4/IPV6.
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
