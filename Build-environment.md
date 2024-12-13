@@ -123,7 +123,7 @@ So **each `termux-packages` `git` repo directory must have its own docker contai
    CONTAINER_NAME=termux-package-builder-fork ./scripts/run-docker.sh
    ```
 
-   List all docker containers created by running. The `IMAGE` column will show the image id for which the container was created for. The command will list not-Termux containers too.
+   List all docker containers created by running. The `IMAGE` column will show the image id for which the container was created for. The command will list non-Termux containers too.
 
    ```shell
    docker container ls --all --size
