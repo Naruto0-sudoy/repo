@@ -272,6 +272,7 @@ Based on the above limitations and examples below, the following limits are chos
 
 ```shell
 TERMUX__INTERNAL_NAME_MAX_LEN=7
+TERMUX_APP__DATA_DIR_MAX_LEN=69
 TERMUX__APPS_DIR_MAX_LEN=84
 TERMUX__APPS_APP_IDENTIFIER_MAX_LEN=11
 TERMUX__APPS_APP_UID_MAX_LEN=9
@@ -285,6 +286,8 @@ For compiling Termux packages for `/mnt/expand` paths or if it may be supported 
 The max length `TERMUX__INTERNAL_NAME_MAX_LEN` for `TERMUX__INTERNAL_NAME` is chosen as `7` based on the max recommended package name length minus the common domain name TLD suffix length of `4` (like `.dev`, `.com`, etc).
 
 **If filesystem socket functionality is required for Termux apps, then Termux apps directory path length should be `<= 83` and if required for Termux packages, then Termux rootfs directory path length should be `<= 85`.**
+
+The max length `TERMUX_APP__DATA_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX_APP__DATA_DIR` is chosen as `69` based on the examples used for `TERMUX__APPS_DIR_MAX_LEN` and `TERMUX__ROOTFS_DIR_MAX_LEN`, with max `11` characters for the package name for a `/mnt/expand` path.
 
 The max length `TERMUX__APPS_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX__APPS_DIR_BY_IDENTIFIER` and `TERMUX__APPS_DIR_BY_UID` is chosen as `84` based on the `12`, `14`, `16` and `19` examples below, which allow multiple unique filesystem sockets under apps directory for each unique app as long as apps directory length `<= 83`.
 
