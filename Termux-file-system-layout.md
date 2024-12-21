@@ -274,7 +274,7 @@ Based on the above limitations and examples below, the following limits are chos
 TERMUX__INTERNAL_NAME_MAX_LEN=7
 TERMUX_APP__DATA_DIR_MAX_LEN=69
 TERMUX__APPS_DIR_MAX_LEN=84
-TERMUX__APPS_APP_IDENTIFIER_MAX_LEN=11
+TERMUX__APPS_APP_IDENTIFIER_MAX_LEN=10
 TERMUX__APPS_APP_UID_MAX_LEN=9
 TERMUX__ROOTFS_DIR_MAX_LEN=86
 TERMUX__UNIX_PATH_MAX=108
@@ -301,39 +301,39 @@ In the following examples:
 - `U` refers to user id.
 - `P` refers to Termux app package name.
 - `I` refers to Termux rootfs id.
-- `N` refers to Termux app or plugin app identifier name limited to `TERMUX__APPS_APP_IDENTIFIER_MAX_LEN` (`11`) characters. For example `termux-xxxx`.
+- `N` refers to Termux app or plugin app identifier name limited to `TERMUX__APPS_APP_IDENTIFIER_MAX_LEN` (`10`) characters. For example `termux-xxxx`.
 - `A` refers to Termux app or plugin app uid (user_id + app_id) (`id -u`) limited to `TERMUX__APPS_APP_UID_MAX_LEN` (`9`) characters. For example `10160` or `100010160`.
-- `D` refers to a unique directory identifier template, like generated with [`mkstemp`](https://man7.org/linux/man-pages/man3/mkstemp.3.html) that requires minimum 6 `X` characters as template.
+- `D` refers to a unique directory identifier template, like generated with [`mkdtemp`](https://man7.org/linux/man-pages/man3/mkdtemp.3.html) that requires minimum 6 `X` characters as template.
 - `X` refers to a unique filename identifier template, like generated with [`mkstemp`](https://man7.org/linux/man-pages/man3/mkstemp.3.html) that requires minimum 6 `X` characters as template.
 - `S` refers to a sub path.
 - `*/termux` refers to `TERMUX__PROJECT_DIR` whose directory basename is set to `TERMUX__INTERNAL_NAME` and is limited to `TERMUX__INTERNAL_NAME_MAX_LEN` (`7`) characters (and currently has length `6`).
 - `*/termux/apps/i` refers to `TERMUX__APPS_DIR_BY_IDENTIFIER` that are created for each app based on a unique app identifier.
 - `*/termux/apps/u` refers to `TERMUX__APPS_DIR_BY_UID` that creates directories for each app based on its unique app uid (user_id + app_id) assigned to it by Android at install time.
-- `t` in `tXXXXXX` refers to type of socket, it may be `i` for a input socket and `o` for an output socket that belong to the same API call.
+- `t` in `DDDDDD/t` refers to type of socket, it may be `i` for a input socket and `o` for an output socket that belong to the same API call.
 
 ```shell
 ##### Apps filesystem sockets
 
-1.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=82`,`package_name=35`)
-2.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=82`,`package_name=35`)
-3.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=80`,`package_name=35`)
-5.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=60`)
-6.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=60`)
-4.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=62`)
+1.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=82`,`package_name=35`)
+2.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/s/DDDDDD/t` (`path=82`,`package_name=35`)
+3.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/DDDDDD/t` (`path=80`,`package_name=35`)
+5.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=107`,`package_name=60`)
+6.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/s/DDDDDD/t` (`path=107`,`package_name=60`)
+4.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/DDDDDD/t` (`path=107`,`package_name=62`)
 7.  `/data/data/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=60`)
 
-8.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=85`,`package_name=35`)
-9.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=85`,`package_name=35`)
-10. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=85`,`package_name=37`)
-12. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=57`)
-13. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=57`)
-11. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=59`)
+8.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=85`,`package_name=35`)
+9.  `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/s/DDDDDD/t` (`path=85`,`package_name=35`)
+10. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/DDDDDD/t` (`path=85`,`package_name=37`)
+12. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=107`,`package_name=57`)
+13. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/s/DDDDDD/t` (`path=107`,`package_name=57`)
+11. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/DDDDDD/t` (`path=107`,`package_name=59`)
 14. `/data/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=55`)
 
-15. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=128`,`package_name=35`) (**invalid**)
-16. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/termux-am` (`path=107`,`package_name=14`)
-17. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNNN/s/tXXXXXX` (`path=107`,`package_name=14`)
-18. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/tXXXXXX` (`path=107`,`package_name=16`)
+15. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=128`,`package_name=35`) (**invalid**)
+16. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/termux-am` (`path=107`,`package_name=14`)
+17. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPP/termux/apps/i/NNNNNNNNNN/s/DDDDDD/t` (`path=107`,`package_name=14`)
+18. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/s/DDDDDD/t` (`path=107`,`package_name=16`)
 19. `/mnt/expand/VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV/user/UU/PPPPPPPPPPPP/termux/apps/u/AAAAAAAAA/DDDDDD/XXXXXX` (`path=107`,`package_name=12`)
 
 
