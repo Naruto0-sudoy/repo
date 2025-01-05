@@ -256,7 +256,7 @@ The Termux apps and rootfs directory path limits depends on:
 - The `volume_uuid` for an `/mnt/expand` path will have `36` characters in the format `VVVVVVVV-VVVV-VVVV-VVVV-VVVVVVVVVVVV`.
 - The `user_id` can max `1000` value, so it can use max `4` characters. However, user id should only use `2` characters normally as only `1-10` users are allowed to be created normally.
 - An app will normally put rootfs (`TERMUX__ROOTFS`) under a subdirectory of the app data directory. For Termux, this is currently the `files` (`5`) sub directory at `/data/data/com.termux/files`, but there are plans to move it to `termux/rootfs/II` (`16`) in future where `II` refers to rootfs id starting at `0` for multi-rootfs support. Termux forks may use a different path, so length may be lesser or higher.
-- The uid (`id -u`) for app processes used for `TERMUX__APPS_DIR_BY_UID` are calculated as per `user_id * AID_USER_OFFSET + AID_APP_START + app_id`, where `AID_USER_OFFSET=100000` (offset for uid ranges for each user), `AID_APP_START=10000` (first app user) and `AID_APP_END=19999` (last app user) as documented in the [Termux Private App Data Directory](#termux-private-app-data-directory) section. The `uid` max length is limited to `TERMUX__APPS_APP_UID_MAX_LEN` (`9`) characters.
+- The uid (`id -u`) for app processes used for `TERMUX__APPS_DIR_BY_UID` are calculated as per `user_id * AID_USER_OFFSET + AID_APP_START + app_id`, where `AID_USER_OFFSET=100000` (offset for uid ranges for each user), `AID_APP_START=10000` (first app user) and `AID_APP_END=19999` (last app user) as documented in the [Termux Private App Data Directory](#termux-private-app-data-directory) section. The `uid` max length is limited to `TERMUX__APPS_APP_UID___MAX_LEN` (`9`) characters.
 
 &nbsp;
 
@@ -264,34 +264,37 @@ The path length of Termux apps and rootfs directory may cause the following prob
 
 - A filesystem socket ([pathanme UNIX domain socket](https://man7.org/linux/man-pages/man7/unix.7.html)) requires that the `sockaddr_un.sun_path` is limited to `108` characters including the null `\0` terminator as per [`UNIX_PATH_MAX`](https://cs.android.com/android/platform/superproject/+/android-13.0.0_r18:bionic/libc/kernel/uapi/linux/un.h;l=22)/`TERMUX__UNIX_PATH_MAX`. A filesystem socket is created by Termux app for [`termux-am-socket`](https://github.com/termux/termux-am-socket) for `termux-am` command under the Termux apps directory `/data/data/@TERMUX_APP__PACKAGE_NAME@/termux/apps` (not Termux rootfs directory). It's also planned to be used for Termux plugin apps for Termux APIs. Packages may create filesystem sockets in the `$TMPDIR` under the Termux rootfs directory.
 
-- For the [`execve()`](https://man7.org/linux/man-pages/man2/execve.2.html) system call, the kernel imposes a maximum length limit on script [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)#Character_interpretation) including the `#!` characters at the start of a script. For Linux `< 5.1`, the limit is `128` characters and for Linux `>= 5.1`, the limit is `256` characters as per [`BINPRM_BUF_SIZE`](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/include/uapi/linux/binfmts.h;l=18) including the null `\0` terminator. ([1](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/fs/binfmt_script.c;l=34), [2](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/include/linux/binfmts.h;l=64)) **If `termux-exec` is set in [`LD_PRELOAD`](#ld_preload) and [`TERMUX_EXEC__INTERCEPT_EXECVE`](#termux_exec__intercept_execve) is enabled, then shebang limit is increased to `340` characters defined by `FILE_HEADER__BUFFER_LEN` (`TERMUX__ROOTFS_DIR_MAX_LEN + BINPRM_BUF_SIZE - 1`) defined in [`exec.h`](https://github.com/termux/termux-exec/blob/master/src/exec/exec.h) as shebang is read and script is passed to interpreter as an argument by `termux-exec` manually.** So if `LD_PRELOAD` will be set for all Termux shells, then this limit does not need to be worried about. Increasing limit to `340` also fixes issues for older Android kernel versions where limit is `128`. The limit is increased to `340`, because `BINPRM_BUF_SIZE` would be set based on the assumption that rootfs is at `/`, so we add Termux rootfs directory max length to it.
+- For the [`execve()`](https://man7.org/linux/man-pages/man2/execve.2.html) system call, the kernel imposes a maximum length limit on script [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)#Character_interpretation) including the `#!` characters at the start of a script. For Linux `< 5.1`, the limit is `128` characters and for Linux `>= 5.1`, the limit is `256` characters as per [`BINPRM_BUF_SIZE`](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/include/uapi/linux/binfmts.h;l=18) including the null `\0` terminator. ([1](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/fs/binfmt_script.c;l=34), [2](https://cs.android.com/android/kernel/superproject/+/0dc2b7de045e6dcfff9e0dfca9c0c8c8b10e1cf3:common/include/linux/binfmts.h;l=64)) **If `termux-exec` is set in [`LD_PRELOAD`](#ld_preload) and [`TERMUX_EXEC__INTERCEPT_EXECVE`](#termux_exec__intercept_execve) is enabled, then shebang limit is increased to `340` characters defined by `FILE_HEADER__BUFFER_LEN` (`TERMUX__ROOTFS_DIR___MAX_LEN + BINPRM_BUF_SIZE - 1`) defined in [`exec.h`](https://github.com/termux/termux-exec/blob/master/src/exec/exec.h) as shebang is read and script is passed to interpreter as an argument by `termux-exec` manually.** So if `LD_PRELOAD` will be set for all Termux shells, then this limit does not need to be worried about. Increasing limit to `340` also fixes issues for older Android kernel versions where limit is `128`. The limit is increased to `340`, because `BINPRM_BUF_SIZE` would be set based on the assumption that rootfs is at `/`, so we add Termux rootfs directory max length to it.
 
 &nbsp;
 
 Based on the above limitations and examples below, the following limits are chosen. **The limits are defined by [`properties.sh`](https://github.com/termux/termux-packages/blob/master/scripts/properties.sh) in `termux-packages`, [`TermuxCoreConstants`](https://github.com/termux/termux-app/blob/master/termux-shared/src/main/java/com/termux/shared/termux/core/TermuxCoreConstants.java) in `termux-app` and [`termux_files.h`](https://github.com/termux/termux-exec/blob/master/src/termux/termux_files.h) in `termux-exec`.**
 
 ```shell
-TERMUX__INTERNAL_NAME_MAX_LEN=7
-TERMUX_APP__DATA_DIR_MAX_LEN=69
-TERMUX__APPS_DIR_MAX_LEN=84
-TERMUX__APPS_APP_IDENTIFIER_MAX_LEN=10
-TERMUX__APPS_APP_UID_MAX_LEN=9
-TERMUX__ROOTFS_DIR_MAX_LEN=86
+TERMUX__INTERNAL_NAME___MAX_LEN=7
+TERMUX_APP__DATA_DIR___MAX_LEN=69
+TERMUX__APPS_DIR___MAX_LEN=84
+TERMUX__APPS_APP_IDENTIFIER___MAX_LEN=10
+TERMUX__APPS_APP_UID___MAX_LEN=9
+TERMUX__APPS_API_SOCKET__SERVER_PARENT_DIR___MAX_LEN=98
+TERMUX__ROOTFS_DIR___MAX_LEN=86
+TERMUX__PREFIX_DIR___MAX_LEN=90
+TERMUX__PREFIX__TMP_DIR___MAX_LEN=94
 TERMUX__UNIX_PATH_MAX=108
 ```
 
 For compiling Termux packages for `/data/data` or `/data/data/UU` paths, **ideally package name should be `<= 21` characters** and max `33` characters. If package name has not yet been chosen, then it would be **best to keep it to `<= 10` characters**.
 For compiling Termux packages for `/mnt/expand` paths or if it may be supported in future, keep package name at max `11` characters, but even that will only give `13` characters for a filesystem socket sub path under `$TMPDIR` and would require patching patches if a longer sub paths are used.
 
-The max length `TERMUX__INTERNAL_NAME_MAX_LEN` for `TERMUX__INTERNAL_NAME` is chosen as `7` based on the max recommended package name length minus the common domain name TLD suffix length of `4` (like `.dev`, `.com`, etc).
+The max length `TERMUX__INTERNAL_NAME___MAX_LEN` for `TERMUX__INTERNAL_NAME` is chosen as `7` based on the max recommended package name length minus the common domain name TLD suffix length of `4` (like `.dev`, `.com`, etc).
 
 **If filesystem socket functionality is required for Termux apps, then Termux apps directory path length should be `<= 83` and if required for Termux packages, then Termux rootfs directory path length should be `<= 85`.**
 
-The max length `TERMUX_APP__DATA_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX_APP__DATA_DIR` is chosen as `69` based on the examples used for `TERMUX__APPS_DIR_MAX_LEN` and `TERMUX__ROOTFS_DIR_MAX_LEN`, with max `11` characters for the package name for a `/mnt/expand` path.
+The max length (including the null `\0` terminator) `TERMUX_APP__DATA_DIR___MAX_LEN = 69` for `TERMUX_APP__DATA_DIR` is chosen based on the examples used for `TERMUX__APPS_DIR___MAX_LEN` and `TERMUX__ROOTFS_DIR___MAX_LEN`, with max `11` characters for the package name for a `/mnt/expand` path.
 
-The max length `TERMUX__APPS_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX__APPS_DIR_BY_IDENTIFIER` and `TERMUX__APPS_DIR_BY_UID` is chosen as `84` based on the `12`, `14`, `16` and `19` examples below, which allow multiple unique filesystem sockets under apps directory for each unique app as long as apps directory length `<= 83`.
+The max length (including the null `\0` terminator) `TERMUX__APPS_DIR___MAX_LEN = 84` for `TERMUX__APPS_DIR_BY_IDENTIFIER` and `TERMUX__APPS_DIR_BY_UID` is chosen based on the `12`, `14`, `16` and `19` examples below, which allow multiple unique filesystem sockets under apps directory for each unique app as long as apps directory length `<= 83`.
 
-The max length `TERMUX__ROOTFS_DIR_MAX_LEN` (including the null `\0` terminator) for `TERMUX__ROOTFS` is chosen as `86` based on the `37` and `41` examples below, which allow multiple unique filesystem sockets under `$TMPDIR` for each unique program as long as rootfs directory length `<= 85`, but would require patching patches that use longer paths under `$TMPDIR`.
+The max length (including the null `\0` terminator) `TERMUX__ROOTFS_DIR___MAX_LEN = 86` for `TERMUX__ROOTFS`, `TERMUX__PREFIX_DIR___MAX_LEN = 90` for `TERMUX__PREFIX` and `TERMUX__PREFIX__TMP_DIR___MAX_LEN = 94` for `TERMUX__PREFIX__TMP_DIR` is chosen based on the `37` and `41` examples below, which allow multiple unique filesystem sockets under `$TMPDIR`/`TERMUX__PREFIX__TMP_DIR` for each unique program as long as rootfs directory length `<= 85`, but would require patching patches that use longer paths under `$TMPDIR`.
 
 
 &nbsp;
@@ -301,12 +304,12 @@ In the following examples:
 - `U` refers to user id.
 - `P` refers to Termux app package name.
 - `I` refers to Termux rootfs id.
-- `N` refers to Termux app or plugin app identifier name limited to `TERMUX__APPS_APP_IDENTIFIER_MAX_LEN` (`10`) characters. For example `termux-xxxx`.
-- `A` refers to Termux app or plugin app uid (user_id + app_id) (`id -u`) limited to `TERMUX__APPS_APP_UID_MAX_LEN` (`9`) characters. For example `10160` or `100010160`.
+- `N` refers to Termux app or plugin app identifier name limited to `TERMUX__APPS_APP_IDENTIFIER___MAX_LEN` (`10`) characters. For example `termux-xxxx`.
+- `A` refers to Termux app or plugin app uid (user_id + app_id) (`id -u`) limited to `TERMUX__APPS_APP_UID___MAX_LEN` (`9`) characters. For example `10160` or `100010160`.
 - `D` refers to a unique directory identifier template, like generated with [`mkdtemp`](https://man7.org/linux/man-pages/man3/mkdtemp.3.html) that requires minimum 6 `X` characters as template.
 - `X` refers to a unique filename identifier template, like generated with [`mkstemp`](https://man7.org/linux/man-pages/man3/mkstemp.3.html) that requires minimum 6 `X` characters as template.
 - `S` refers to a sub path.
-- `*/termux` refers to `TERMUX__PROJECT_DIR` whose directory basename is set to `TERMUX__INTERNAL_NAME` and is limited to `TERMUX__INTERNAL_NAME_MAX_LEN` (`7`) characters (and currently has length `6`).
+- `*/termux` refers to `TERMUX__PROJECT_DIR` whose directory basename is set to `TERMUX__INTERNAL_NAME` and is limited to `TERMUX__INTERNAL_NAME___MAX_LEN` (`7`) characters (and currently has length `6`).
 - `*/termux/apps/i` refers to `TERMUX__APPS_DIR_BY_IDENTIFIER` that are created for each app based on a unique app identifier.
 - `*/termux/apps/u` refers to `TERMUX__APPS_DIR_BY_UID` that creates directories for each app based on its unique app uid (user_id + app_id) assigned to it by Android at install time.
 - `t` in `DDDDDD/t` refers to type of socket, it may be `i` for a input socket and `o` for an output socket that belong to the same API call.
