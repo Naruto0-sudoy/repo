@@ -124,7 +124,7 @@ See also [Auto updating packages](./Auto-updating-packages).
 | 2     | `TERMUX_PKG_DESCRIPTION` | yes | Short, one-line description of package. |
 | 3     | `TERMUX_PKG_LICENSE` | yes | Package license. |
 | 4     | `TERMUX_PKG_LICENSE_FILE` | no | Name of license file, if it is not found automatically. |
-| 5     | `TERMUX_PKG_MAINTAINER` | no | Package maintainer. |
+| 5     | `TERMUX_PKG_MAINTAINER` | yes | Package maintainer. |
 | 6     | `TERMUX_PKG_API_LEVEL` | no | Android API level for which package should be compiled. |
 | 7     | `TERMUX_PKG_VERSION` | yes | Original package version. |
 | 8     | `TERMUX_PKG_REVISION` | no | Package revision. Bumped on each package rebuild. |
