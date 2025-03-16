@@ -416,6 +416,16 @@ Hosted in Hanoi, Vietnam. Update Twice a day, 1Gbp/s and support IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.nguyenhoang.cloud/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.nguyenhoang.cloud/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [MeowIce](https://github.com/MeowIce)
+
+Hosted in Ho Chi Minh, Vietnam. Update hourly, 500mbps ~ 1Gbp/s and support IPV4/IPV6 and HTTP/HTTPS/[RSYNC](rsync://rsync.meowsmp.net/termux) .
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.meowsmp.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.meowsmp.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.meowsmp.net/termux/termux-x11 x11 main`     |
+
 #### Mirrors by [karibu](mailto:karibu@freedif.com)
 
 Hosted in Singapore. Updated every one hour, 10Gbp/s and support IPV4 only.
