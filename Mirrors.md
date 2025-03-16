@@ -418,7 +418,9 @@ Hosted in Hanoi, Vietnam. Update Twice a day, 1Gbp/s and support IPV4 only.
 
 #### Mirrors by [MeowIce](https://github.com/MeowIce)
 
-Hosted in Ho Chi Minh, Vietnam. Update hourly, 500mbps ~ 1Gbp/s and support IPV4/IPV6 and HTTP/HTTPS/[RSYNC](rsync://rsync.meowsmp.net/termux) .
+Hosted in Ho Chi Minh, Vietnam. Update hourly, 500mbps ~ 1Gbp/s and support IPV4/IPV6 and HTTP/HTTPS/RSYNC. 
+
+RSYNC link: `rsync://rsync.meowsmp.net/termux`  
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
