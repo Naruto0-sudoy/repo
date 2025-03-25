@@ -214,6 +214,7 @@ The [`build-package.sh`] scripts support `2` formats for remote `https://` URLs,
     - The URL path should end with `.git` and host a remote `git` repository. ([1](https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols), [2](https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server))  
     - If a branch is set in the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package, it will be checked out before building.  
     - If the source directory has been cloned already in a previous build, then it will **NOT be cloned again**, even if [`-f`]/[`-F`] flags are passed for rebuilds, and the **[`-r`] flag WILL be required** to clone the latest sources again/every time.  
+    - No checksum checks will be done against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file. To avoid confusion, the `$TERMUX_PKG_SHA256` variable should not be set, or be set to an empty string or `SKIP_CHECKSUM`. 
 
 &nbsp;
 
@@ -239,7 +240,7 @@ The [`build-package.sh`] scripts support `3` formats for local `file://` URLs, a
     - If a branch is set in the `$TERMUX_PKG_GIT_BRANCH` variable in the `build.sh` of the package, it will be checked out before building. **Any uncommitted changes to the `git` branch WILL NOT get built.**  
     - If the source directory has been cloned already in a previous build, then it will **NOT be cloned again**, even if [`-f`]/[`-F`] flags are passed for rebuilds, and the **[`-r`] flag WILL be required** to clone the latest sources again/every time.  
     - An additional requirement is that the local [`git`] repository must have its `origin` url in `.git/config` as a `https` URL instead of a `ssh` (`git@`) URL if running in [`termux-packages` docker container]  and `$TERMUX_PKG_GIT_BRANCH` is set, as it doesn't have `ssh` installed by default and `git fetch` while downloading sources would fail otherwise. So if a local `git` repository needs to be cloned from an upstream `git` URL itself, like GitHub, then use `https://github.com/org/repo.git` to clone instead of `git@github.com:org/repo.git`. Or `ssh` can be installed inside the docker container and `ssh` keys set up manually.  
-    - No checksum checks will be done against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file. To avoid confusion, the `$TERMUX_PKG_SHA256` variable should be set to an empty string or `SKIP_CHECKSUM`.  
+    - No checksum checks will be done against the value set in `$TERMUX_PKG_SHA256` variable of the `build.sh` file. To avoid confusion, the `$TERMUX_PKG_SHA256` variable should not be set, or be set to an empty string or `SKIP_CHECKSUM`.  
 
 ---
 
