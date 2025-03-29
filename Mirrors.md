@@ -222,7 +222,7 @@ Updated four times per day.
 
 #### Mirrors by [Utermux](https://github.com/utermuxblog)
 
-Hosted in San Jose, California, USA. Updated daily.
+Hosted in Los Angeles, California, USA. Updated daily. 1Gb/s and support IPV4/IPV6.
 
 More info at https://github.com/UtermuxBlog/Issue.
 
