@@ -291,9 +291,10 @@ Additional notes about subpackages:
 | 5     | `TERMUX_SUBPKG_CONFLICTS` | no | Comma-separated list of packages which have file name collisions with the current one. |
 | 6     | `TERMUX_SUBPKG_REPLACES` | no | Comma-separated list of packages being replaced by current one. |
 | 7     | `TERMUX_SUBPKG_ESSENTIAL` | no | Whether to treat subpackage as essential which cannot be uninstalled in usual way. Default is **false**. |
-| 8     | `TERMUX_SUBPKG_PLATFORM_INDEPENDENT` | no | Whether to treat subpackage as platform independent. Default is **false**. |
-| 9     | `TERMUX_SUBPKG_INCLUDE` | yes | A space or newline separated list of files to be included in subpackage. |
-| 10    | `TERMUX_SUBPKG_CONFFILES` | no | A space or newline separated list of package configuration files that should not be overwritten on update. |
+| 8     | `TERMUX_SUBPKG_EXCLUDED_ARCHES` | no | Comma-separated list of CPU architectures for which this subpackage cannot be compiled. |
+| 9     | `TERMUX_SUBPKG_PLATFORM_INDEPENDENT` | no | Whether to treat subpackage as platform independent. Default is **false**. |
+| 10    | `TERMUX_SUBPKG_INCLUDE` | yes | A space or newline separated list of files to be included in subpackage. |
+| 11    | `TERMUX_SUBPKG_CONFFILES` | no | A space or newline separated list of package configuration files that should not be overwritten on update. |
 
 ## &nbsp;
 
