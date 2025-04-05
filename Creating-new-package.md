@@ -148,7 +148,7 @@ See also [Auto updating packages](./Auto-updating-packages).
 | 26    | `TERMUX_PKG_BUILD_IN_SRC` | no | Whether to perform build in a source code directory. Default is **false**. |
 | 27    | `TERMUX_PKG_HAS_DEBUG` | no | Whether debug builds are possible for package. Default is **true**. |
 | 28    | `TERMUX_PKG_PLATFORM_INDEPENDENT` | no | Whether to treat package as platform independent. Default is **false**. |
-| 29    | `TERMUX_PKG_BLACKLISTED_ARCHES` | no | Comma-separated list of CPU architectures for which package cannot be compiled. |
+| 29    | `TERMUX_PKG_EXCLUDED_ARCHES` | no | Comma-separated list of CPU architectures for which package cannot be compiled. |
 | 30    | `TERMUX_PKG_HOSTBUILD` | no | Whether package require building for host. Default is **false**. |
 | 31    | `TERMUX_PKG_FORCE_CMAKE` | no | Whether to prefer CMake over Autotools configure script. Default is **false**. |
 | 32    | `TERMUX_PKG_EXTRA_CONFIGURE_ARGS` | no | Extra arguments passed to build system configuration utility. |
