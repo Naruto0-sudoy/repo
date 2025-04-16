@@ -139,8 +139,8 @@ See also [Auto updating packages](./Auto-updating-packages).
 | 17    | `TERMUX_PKG_CONFLICTS` | no | Comma-separated list of packages which have file name collisions with the current one. |
 | 18    | `TERMUX_PKG_REPLACES` | no | Comma-separated list of packages being replaced by current one. |
 | 19    | `TERMUX_PKG_PROVIDES` | no | Comma-separated list of virtual packages being provided by current one. |
-| 20    | `TERMUX_PKG_RECOMMENDS` | no | Comma-separated list of non-absolute dependencies - packages usually used with the current one. |
-| 21    | `TERMUX_PKG_SUGGESTS` | no | Comma-separated list of packages that are related to or enhance the current one. |
+| 20    | `TERMUX_PKG_RECOMMENDS` | no | Comma-separated list of non-absolute dependencies.<br>***These are installed by default along with the package.*** |
+| 21    | `TERMUX_PKG_SUGGESTS` | no | Comma-separated list of packages that are related to or enhance the current one.<br>These are not installed with the package by default. |
 | 22    | `TERMUX_PKG_ESSENTIAL` | no | Whether to treat package as essential which cannot be uninstalled in usual way. Default is **false**. |
 | 23    | `TERMUX_PKG_NO_STATICSPLIT` | no | Whether to split static libraries into a subpackage. Default is **false**. |
 | 24    | `TERMUX_PKG_STATICSPLIT_EXTRA_PATTERNS` | no | Extra patterns to include in static package. It must be relative to `$TERMUX__PREFIX`. For example: to include `*.h` files from `$TERMUX__PREFIX/lib`, specify `lib/*.h`. Use bash globstar patterns to recurse sub-directories. |
@@ -287,14 +287,16 @@ Additional notes about subpackages:
 | 1     | `TERMUX_SUBPKG_DESCRIPTION` | yes | Short, one-line description of subpackage. |
 | 2     | `TERMUX_SUBPKG_DEPEND_ON_PARENT` | no | Specifies way how subpackage should depend on parent. See [Subpackage dependencies](#subpackage-dependencies) for more information. |
 | 3     | `TERMUX_SUBPKG_DEPENDS` | no | Comma-separated list of subpackage dependencies. |
-| 4     | `TERMUX_SUBPKG_BREAKS` | no | Comma-separated list of packages that are incompatible with the current one. |
-| 5     | `TERMUX_SUBPKG_CONFLICTS` | no | Comma-separated list of packages which have file name collisions with the current one. |
-| 6     | `TERMUX_SUBPKG_REPLACES` | no | Comma-separated list of packages being replaced by current one. |
-| 7     | `TERMUX_SUBPKG_ESSENTIAL` | no | Whether to treat subpackage as essential which cannot be uninstalled in usual way. Default is **false**. |
-| 8     | `TERMUX_SUBPKG_EXCLUDED_ARCHES` | no | Comma-separated list of CPU architectures for which this subpackage cannot be compiled. |
-| 9     | `TERMUX_SUBPKG_PLATFORM_INDEPENDENT` | no | Whether to treat subpackage as platform independent. Default is **false**. |
-| 10    | `TERMUX_SUBPKG_INCLUDE` | yes | A space or newline separated list of files to be included in subpackage. |
-| 11    | `TERMUX_SUBPKG_CONFFILES` | no | A space or newline separated list of package configuration files that should not be overwritten on update. |
+| 4     | `TERMUX_SUBPKG_RECOMMENDS` | no | Comma-separated list of non-absolute dependencies.<br>***These are installed by default along with the (sub)package.*** |
+| 5     | `TERMUX_SUBPKG_SUGGESTS` | no | Comma-separated list of packages that are related to or enhance the current one.<br>These are not installed with the (sub)package by default. |
+| 6     | `TERMUX_SUBPKG_BREAKS` | no | Comma-separated list of packages that are incompatible with the current one. |
+| 7     | `TERMUX_SUBPKG_CONFLICTS` | no | Comma-separated list of packages which have file name collisions with the current one. |
+| 8     | `TERMUX_SUBPKG_REPLACES` | no | Comma-separated list of packages being replaced by current one. |
+| 9     | `TERMUX_SUBPKG_ESSENTIAL` | no | Whether to treat subpackage as essential which cannot be uninstalled in usual way. Default is **false**. |
+| 10    | `TERMUX_SUBPKG_EXCLUDED_ARCHES` | no | Comma-separated list of CPU architectures for which this subpackage cannot be compiled. |
+| 11    | `TERMUX_SUBPKG_PLATFORM_INDEPENDENT` | no | Whether to treat subpackage as platform independent. Default is **false**. |
+| 12    | `TERMUX_SUBPKG_INCLUDE` | yes | A space or newline separated list of files to be included in subpackage. |
+| 13    | `TERMUX_SUBPKG_CONFFILES` | no | A space or newline separated list of package configuration files that should not be overwritten on update. |
 
 ## &nbsp;
 
