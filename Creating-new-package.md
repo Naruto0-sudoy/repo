@@ -359,7 +359,7 @@ Among with variables listed above (i.e. control fields), certain variables have 
 
 - `TERMUX_REPO_COMPONENT` - Array of repository component names in addition for `$TERMUX_REPO_URL`.
 
-- `TERMUX_PACKAGE_FORMAT` - Package output format.
+- `TERMUX_PACKAGE_FORMAT` - Package output format. Either `debian` (default) or `pacman`.
 
 ---
 
