@@ -372,7 +372,7 @@ different suborders are not executed simultaneously.
 | 18    | `termux_step_post_make_install` | yes | Hook to run commands immediately after installation. |
 | 19    | `termux_step_install_service_scripts` | yes | Installs scripts for termux-services |
 | 20    | `termux_step_install_license` | yes | Link or copy package-specific LICENSE to `./share/doc/$TERMUX_PKG_NAME`. |
-| 21    | `termux_step_extract_into_massagedir` | no with `make_install` | Extract files modified in `$TERMUX__PREFIX`. |
+| 21    | `termux_step_copy_into_massagedir` | no with `make_install` | Extract files modified in `$TERMUX__PREFIX`. |
 | 22    | `termux_step_massage` | no | Strip binaries, remove unneeded files. |
 | 22.1  | `termux_create_debian_subpackages` | no | Creates all subpackages (debian format). |
 | 22.2  | `termux_create_pacman_subpackages` | no | Creates all subpackages (pacman format). |
