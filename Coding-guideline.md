@@ -78,3 +78,5 @@
 
 - Highly recommended to document changes unless they are just FHS path
   replacements.
+
+See also: https://github.com/termux/termux-packages/blob/master/CONTRIBUTING.md#creating-patch-files
