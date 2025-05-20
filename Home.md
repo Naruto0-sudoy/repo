@@ -20,10 +20,9 @@ Package support on Android OS versions 5.x - 6.x is discontinued as of 01.01.202
 
 ### Application and add-ons
 
-All apks are being distributed through [Google Play](https://play.google.com/store/apps/developer?id=Fredrik+Fornwall), [F-Droid](https://search.f-droid.org/?q=Termux) and [Kali Nethunter Store](https://store.nethunter.com/en/packages/#q=Termux).
+All apks are distributed through [GitHub](https://github.com/orgs/termux/repositories?q=app) and [F-Droid](https://search.f-droid.org/?q=Termux) and they are signed with different signing keys and so different sources can't be mixed.
 
-Builds on F-Droid and Kali Nethunter Store are done on their own and signed with different certificates.
-Thus, application and add-ons obtained from different source can't be mixed.
+**See also:** https://github.com/termux/termux-app#installation
 
 * [termux-app](https://github.com/termux/termux-app): terminal emulator application sources.
 * [termux-api](https://github.com/termux/termux-api): Termux:API add-on sources.
