@@ -72,6 +72,10 @@ following command line options:
 
 ### Build bootstrap archives
 
+**NOTE:** Use `build-bootstraps.sh` from the https://github.com/termux/termux-packages/pull/24647 branch at https://github.com/agnostic-apollo/termux-packages/tree/infra-improvs to build bootstrap for now, as the one in `master` branch of `termux/termux-packages` repo has lot of issues and will take time to fix, you may want to rebase the `infra-improvs` branch against `termux/termux-packages` `master` to build latest package versions.
+
+##
+
 The [`build-bootstraps.sh`](https://github.com/termux/termux-packages/blob/master/scripts/build-bootstraps.sh) is a script to build bootstrap archives for the `termux-app` from local package sources instead of debs published in apt repo like done by `generate-bootstrap.sh`. It allows bootstrap archives to be easily built for (forked) termux apps without having to publish an apt repo first. Run `build-bootstrap.sh --help` for more info.
 
 To check the list of default packages that are added to the bootstrap, [check packages added to the `$PACKAGES` `bash` array](https://github.com/termux/termux-packages/blob/2e9cd917/scripts/build-bootstraps.sh#L399-L440) in `build-bootstraps.sh` script. Additional packages can be added by passing them with the `-a` and `--add` command arguments.
