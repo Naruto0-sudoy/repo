@@ -18,6 +18,7 @@ Once the build environment has been properly [set up](./Build-environment), then
 - [Build Process](#build-process)
 - [Build Steps](#build-steps)
 - [Build Local Package](#build-local-package)
+- [CI/CD Tags](#5-cicd-tags)
 
 ---
 
@@ -551,9 +552,26 @@ The following arguments may need to be passed:
 
 &nbsp;
 
+### 5. CI/CD Tags
 
+Sometimes it may be necessary or desirable to skip the automatic CI/CD pipelines for Pull Requests.
+For this purpose GitHub Actions recognizes the following "tags" as part of commit messages.
 
+- `[no ci]`
+- `[skip ci]`
+- `[ci skip]`
+- `[skip actions]`
+- `[actions skip]`
 
+###### https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/skipping-workflow-runs
+
+To extend these existing tags our [`packages.yml`](https://github.com/termux/termux-packages/blob/bootstrap-2025.06.01-r1%2Bapt.android-7/.github/workflows/packages.yml#L94-L103) workflow also supports the tag `%ci:no-build` to force the CI to not perform package builds.
+
+<!-- Uncomment after #24948 is merged
+
+And the `[no version check]` tag to skip checking for version changes as part of the package build linting step.
+
+-->
 
 [`build-package.sh`]: https://github.com/termux/termux-packages/blob/master/build-package.sh
 [`git`]: https://git-scm.com/docs/git
