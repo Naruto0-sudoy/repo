@@ -18,7 +18,7 @@ Once the build environment has been properly [set up](./Build-environment), then
 - [Build Process](#build-process)
 - [Build Steps](#build-steps)
 - [Build Local Package](#build-local-package)
-- [CI/CD Tags](#5-cicd-tags)
+- [CI/CD Tags](#cicd-tags)
 
 ---
 
@@ -552,7 +552,7 @@ The following arguments may need to be passed:
 
 &nbsp;
 
-### 5. CI/CD Tags
+## CI/CD Tags
 
 Sometimes it may be necessary or desirable to skip the automatic CI/CD pipelines for Pull Requests.
 For this purpose GitHub Actions recognizes the following "tags" as part of commit messages.
