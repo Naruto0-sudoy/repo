@@ -356,6 +356,16 @@ Hosted in Kalisz, Poland. Updated once per day. 1Gbp/s and is IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.cfe.re/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.cfe.re/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [ICM, Warsaw University](https://icm.edu.pl/)
+
+Hosted in Warsaw, Poland. Updated every 6 hours. 20Gbp/s and is IPV4/IPV6/RSYNC/FTP/GOPHER.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://ftp.icm.edu.pl/pub/Linux/dist/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://ftp.icm.edu.pl/pub/Linux/dist/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://ftp.icm.edu.pl/pub/Linux/dist/termux/termux-x11 x11 main`     |
+
 #### Mirrors by [Rodrigo de Avila](https://rda.run/)
 
 Hosted in Brochier, Brazil. Updated once per day. 500MB/s and support IPV4/IPV6.
