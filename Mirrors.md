@@ -4,7 +4,7 @@ On `10th` of December `2022` we moved the primary termux packages repository (ht
 
 The `unstable-packages`, `game-packages` and `science-packages` channels have been merged into the `termux-main` channel and do not need to be synced any longer.
 
-* Mirror Size (full): 33.4 GB (as of December 2024)
+* Mirror Size (full): 27.57GB (as of June 2025)
 
 # Repositories and Mirrors
 
