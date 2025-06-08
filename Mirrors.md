@@ -86,16 +86,6 @@ Hosted in Chisinau, Moldova. Updated once per 6 hours. 10Gb/s and support IPV4/I
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://md.mirrors.hacktegic.com/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://md.mirrors.hacktegic.com/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [Dev-Nergis](https://github.com/Dev-Nergis)
-
-Hosted in Seoul, South Korea. Updated every 6 hours. 1Gb/s and support IPV4/IPV6.
-
-| Repository                                             | sources.list entry                                               |
-|:-------------------------------------------------------|:-----------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.textcord.xyz/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.textcord.xyz/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.textcord.xyz/termux/termux-x11 x11 main`     |
-
 #### Mirrors by [Jeonnam High School Software Solution Club](https://mirror.jeonnam.school)
 
 Hosted in Gwangju, South Korea. Updated every one hour. 1Gb/s and support IPV4 only.
@@ -210,16 +200,6 @@ Hosted in Toronto, Ontario, Canada. Updated four times per day.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.quantum5.ca/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.quantum5.ca/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [Sahilister](https://github.com/sahilister)
-
-Updated four times per day.
-
-| Repository                                             | sources.list entry                                             |
-|:-------------------------------------------------------|:---------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.sahilister.in/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.sahilister.in/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.sahilister.in/termux/termux-x11 x11 main`     |
-
 #### Mirrors by [Utermux](https://github.com/utermuxblog)
 
 Hosted in Los Angeles, California, USA. Updated daily. 1Gb/s and support IPV4/IPV6.
@@ -292,16 +272,6 @@ Hosted in Germany, Updated every an hour.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://cdn.lumito.net/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://cdn.lumito.net/termux/termux-x11 x11 main`     |
 
-#### Mirrors by [wale](https://github.com/wale)
-
-Hosted in Sydney, Australia.
-
-| Repository                                             | sources.list entry                                              |
-|:-------------------------------------------------------|:----------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.wale.id.au/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.wale.id.au/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.wale.id.au/termux/termux-x11 x11 main`     |
-
 #### Mirrors by [FAU](https://www.fau.de)
 
 Hosted in Erlangen, Germany. Updated every 6 hours. 25Gbps and support IPV4/IPV6.
@@ -345,16 +315,6 @@ Hosted in Frankfurt, Germany, Updated every 15 minutes. 4Gbp/s and is IPV4 only.
 | [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.medzik.dev/termux/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.medzik.dev/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.medzik.dev/termux/termux-x11 x11 main`     |
-
-#### Mirrors by [cfxproxy](https://github.com/cfxproxy)
-
-Hosted in Kalisz, Poland. Updated once per day. 1Gbp/s and is IPV4 only.
-
-| Repository                                             | sources.list entry                                               |
-|:-------------------------------------------------------|:-----------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.cfe.re/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.cfe.re/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.cfe.re/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [ICM, Warsaw University](https://icm.edu.pl/)
 
@@ -448,16 +408,6 @@ Hosted in Singapore. Updated every one hour, 10Gbp/s and support IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.freedif.org/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.freedif.org/termux/termux-x11 x11 main`     |
 
-#### Mirrors by @7zx In Porto, Portugal
-
-Updated daily.
-
-| Repository                                             | sources.list entry                                             |
-|:-------------------------------------------------------|:---------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.polido.pt/termux/termux-main stable main`  |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.polido.pt/termux/termux-root root stable`  |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.polido.pt/termux/termux-x11 x11 main`      |
-
 #### Mirrors by [Taiwan Digital Streaming Co.](https://www.twds.com.tw/)
 
 Hosted in Taiwan. Updated every 3 hours, 20 Gbps (80 Gbps for peers) and support IPV4/IPV6/RSYNC.
@@ -482,16 +432,6 @@ Hosted in Ashburn, VA, United States. Updated every 6 hours, 1 Gbps and support 
 
 Mirrors for users in India for better ping and download speed.
 
-#### Mirrors by [Nabeelshaikh7](https://github.com/nabeelshaikh7)
-
-This mirror is hosted in India.
-
-| Repository                                             | sources.list entry                                       |
-|:-------------------------------------------------------|:---------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://packages.nscdn.top/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://packages.nscdn.top/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://packages.nscdn.top/termux-x11 x11 main`     |
-
 #### Mirrors by [Saswata](https://github.com/saswatasarkar13)
 
 Hosted in India. Updated every one hour, 300Mbp/s and support IPV4 only.
@@ -502,6 +442,23 @@ Hosted in India. Updated every one hour, 300Mbp/s and support IPV4 only.
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.saswata.xyz/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.saswata.xyz/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [sahilister](https://github.com/sahilister)
+
+Hosted in Mumbai, India. Updated every 6 hours, 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.in.sahilister.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.in.sahilister.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.in.sahilister.net/termux/termux-x11 x11 main`     |
+
+Hosted in Nuremberg, Germany. Updated every 6 hours, 1Gbp/s and support IPV4/IPV6.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.in.sahilister.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.in.sahilister.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.in.sahilister.net/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [Albonycal](https://github.com/Albonycal)
 
