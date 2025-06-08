@@ -466,9 +466,9 @@ This mirror is hosted in India, Updated every 53 minutes.
 
 | Repository                                             | sources.list entry                                       |
 |:-------------------------------------------------------|:---------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.albony.xyz/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.albony.xyz/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.albony.xyz/termux/termux-x11 x11 main`     |
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.nag.albony.in/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.nag.albony.in/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.nag.albony.in/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [niranjan](https://niranjan.co/)
 
@@ -511,24 +511,6 @@ Hosted in Nizhny Novgorod, Russia, updated four times per day.
 | [Main](https://github.com/termux/termux-packages)      | `deb https://repository.su/termux/termux-main stable main` |
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://repository.su/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://repository.su/termux/termux-x11 x11 main`     |
-
-### Mirrors hosted in Iran
-
-Mirrors for users in Iran for better ping and download speed.
-
-#### Mirrors by [Bardia Moshiri](https://bardia.tech/)
-
-This mirror is hosted in Iran. Updated four times per day.
-
-Rsync: `rsync://mirror.bardia.tech/termux`
-
-Contact: `fakeshell@bardia.tech`
-
-| Repository                                             | sources.list entry                                                          |
-|:-------------------------------------------------------|:----------------------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.bardia.tech/termux/termux-main/ stable main`      |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirror.bardia.tech/termux/termux-root/ root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.bardia.tech/termux/termux-x11/ x11 main`               |
 
 ### Mirrors hosted in Chinese Mainland
 
