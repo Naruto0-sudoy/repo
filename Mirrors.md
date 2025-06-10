@@ -456,9 +456,9 @@ Hosted in Nuremberg, Germany. Updated every 6 hours, 1Gbp/s and support IPV4/IPV
 
 | Repository                                             | sources.list entry                                               |
 |:-------------------------------------------------------|:-----------------------------------------------------------------|
-| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.in.sahilister.net/termux/termux-main stable main` |
-| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.in.sahilister.net/termux/termux-root root stable` |
-| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.in.sahilister.net/termux/termux-x11 x11 main`     |
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirrors.de.sahilister.net/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packages) | `deb https://mirrors.de.sahilister.net/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirrors.de.sahilister.net/termux/termux-x11 x11 main`     |
 
 #### Mirrors by [Albonycal](https://github.com/Albonycal)
 
