@@ -338,10 +338,11 @@ different suborders are not executed simultaneously.
 | 0.5   | `termux_setup_ninja` | no | Setup Ninja make system. |
 | 0.6   | `termux_setup_meson` | no | Setup Meson configure system. |
 | 0.7   | `termux_setup_protobuf` | no | Setup Protobuf compiler. |
-| 0.8   | `termux_setup_rust` | no | Setup Cargo Build. |
-| 0.9   | `termux_setup_ghc_cross_compiler` | no | Setup ghc cross-compiler targeting Android. |
-| 0.10  | `termux_setup_ghc` | no | Setup ghc compiler for host build. |
-| 0.11  | `termux_setup_jailbreak_cabal` | no | Setup `jailbreak-cabal` utility. It is used to remove version constraints from Haskell (with cabal build system)
+| 0.8   | `termux_setup_treesitter` | no | Setup `tree-sitter` CLI. |
+| 0.9   | `termux_setup_rust` | no | Setup Cargo Build. |
+| 0.10   | `termux_setup_ghc_cross_compiler` | no | Setup ghc cross-compiler targeting Android. |
+| 0.11  | `termux_setup_ghc` | no | Setup ghc compiler for host build. |
+| 0.12  | `termux_setup_jailbreak_cabal` | no | Setup `jailbreak-cabal` utility. It is used to remove version constraints from Haskell (with cabal build system)
 | 1     | `termux_step_setup_variables` | no | Setup essential variables like directory locations and flags. |
 | 2     | `termux_step_handle_buildarch` | no | Determine architecture to build for. |
 | 3     | `termux_step_setup_build_folders` | no | Delete old src and build directories if they exist. |
