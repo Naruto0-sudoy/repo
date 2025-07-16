@@ -428,6 +428,16 @@ Hosted in Ashburn, VA, United States. Updated every 6 hours, 1 Gbps and support 
 | [Root](https://github.com/termux/termux-root-packages) | `deb https://gnlug.org/pub/termux/termux-root root stable` |
 | [X11](https://github.com/termux/x11-packages)          | `deb https://gnlug.org/pub/termux/termux-x11 x11 main`     |
 
+#### Mirrors by [CutiesDomain](https://github.com/CutiesDomain)
+
+Hosted in Germany. Updated every 6 hours, 500 Mbps and support IPV4/RSYNC.
+
+| Repository                                             | sources.list entry                                               |
+|:-------------------------------------------------------|:-----------------------------------------------------------------|
+| [Main](https://github.com/termux/termux-packages)      | `deb https://mirror.cutie.dating/termux/termux-main stable main` |
+| [Root](https://github.com/termux/termux-root-packags)       | `deb https://mirror.cutie.dating/termux/termux-root root stable` |
+| [X11](https://github.com/termux/x11-packages)          | `deb https://mirror.cutie.dating/termux/termux-x11 x11 main`     |
+
 ### Mirrors hosted in India
 
 Mirrors for users in India for better ping and download speed.
