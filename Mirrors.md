@@ -16,7 +16,7 @@ Service availability may vary depending on your device, Internet connection qual
 
 ## How to use
 
-Run `apt edit-sources`, comment out existing URLs and add line for picked repository, or use the `termux-change-repo` script that is part of the `termux-tools` package.
+Run `apt edit-sources`, comment out existing URLs and add line for picked repository, or use the `termux-change-repo` script that is part of the `termux-tools` package. The mirrors provided by `termux-tools` package are specified at https://github.com/termux/termux-tools/tree/master/mirrors.
 
 ## Primary host
 
