@@ -1,0 +1,214 @@
+CODECATALYST()                                                  CODECATALYST()
+
+NNAAMMEE
+       codecatalyst -
+
+DDEESSCCRRIIPPTTIIOONN
+       Welcome to the Amazon CodeCatalyst API reference. This reference
+       provides descriptions of operations and data types for Amazon
+       CodeCatalyst. You can use the Amazon CodeCatalyst API to work with the
+       following objects.
+
+       Spaces, by calling the following:
+
+       +o DeleteSpace , which deletes a space.
+
+       +o GetSpace , which returns information about a space.
+
+       +o GetSubscription , which returns information about the Amazon Web
+         Services account used for billing purposes and the billing plan for
+         the space.
+
+       +o ListSpaces , which retrieves a list of spaces.
+
+       +o UpdateSpace , which changes one or more values for a space.
+
+       Projects, by calling the following:
+
+       +o CreateProject which creates a project in a specified space.
+
+       +o GetProject , which returns information about a project.
+
+       +o ListProjects , which retrieves a list of projects in a space.
+
+       Users, by calling the following:
+
+       +o GetUserDetails , which returns information about a user in Amazon
+         CodeCatalyst.
+
+       Source repositories, by calling the following:
+
+       +o CreateSourceRepository , which creates an empty Git-based source
+         repository in a specified project.
+
+       +o CreateSourceRepositoryBranch , which creates a branch in a specified
+         repository where you can work on code.
+
+       +o DeleteSourceRepository , which deletes a source repository.
+
+       +o GetSourceRepository , which returns information about a source
+         repository.
+
+       +o GetSourceRepositoryCloneUrls , which returns information about the
+         URLs that can be used with a Git client to clone a source repository.
+
+       +o ListSourceRepositories , which retrieves a list of source
+         repositories in a project.
+
+       +o ListSourceRepositoryBranches , which retrieves a list of branches in
+         a source repository.
+
+       Dev Environments and the Amazon Web Services Toolkits, by calling the
+       following:
+
+       +o CreateDevEnvironment , which creates a Dev Environment, where you can
+         quickly work on the code stored in the source repositories of your
+         project.
+
+       +o DeleteDevEnvironment , which deletes a Dev Environment.
+
+       +o GetDevEnvironment , which returns information about a Dev
+         Environment.
+
+       +o ListDevEnvironments , which retrieves a list of Dev Environments in a
+         project.
+
+       +o ListDevEnvironmentSessions , which retrieves a list of active Dev
+         Environment sessions in a project.
+
+       +o StartDevEnvironment , which starts a specified Dev Environment and
+         puts it into an active state.
+
+       +o StartDevEnvironmentSession , which starts a session to a specified
+         Dev Environment.
+
+       +o StopDevEnvironment , which stops a specified Dev Environment and puts
+         it into an stopped state.
+
+       +o StopDevEnvironmentSession , which stops a session for a specified Dev
+         Environment.
+
+       +o UpdateDevEnvironment , which changes one or more values for a Dev
+         Environment.
+
+       Workflows, by calling the following:
+
+       +o GetWorkflow , which returns information about a workflow.
+
+       +o GetWorkflowRun , which returns information about a specified run of a
+         workflow.
+
+       +o ListWorkflowRuns , which retrieves a list of runs of a specified
+         workflow.
+
+       +o ListWorkflows , which retrieves a list of workflows in a specified
+         project.
+
+       +o StartWorkflowRun , which starts a run of a specified workflow.
+
+       Security, activity, and resource management in Amazon CodeCatalyst, by
+       calling the following:
+
+       +o CreateAccessToken , which creates a personal access token (PAT) for
+         the current user.
+
+       +o DeleteAccessToken , which deletes a specified personal access token
+         (PAT).
+
+       +o ListAccessTokens , which lists all personal access tokens (PATs)
+         associated with a user.
+
+       +o ListEventLogs , which retrieves a list of events that occurred during
+         a specified time period in a space.
+
+       +o VerifySession , which verifies whether the calling user has a valid
+         Amazon CodeCatalyst login and session.
+
+       NNOOTTEE::
+          If you are using the Amazon CodeCatalyst APIs with an SDK or the
+          CLI, you must configure your computer to work with Amazon
+          CodeCatalyst and single sign-on (SSO). For more information, see
+          _S_e_t_t_i_n_g _u_p _t_o _u_s_e _t_h_e _C_L_I _w_i_t_h _A_m_a_z_o_n _C_o_d_e_C_a_t_a_l_y_s_t and the SSO
+          documentation for your SDK.
+
+AAVVAAIILLAABBLLEE CCOOMMMMAANNDDSS
+
+       +o create-access-token
+
+       +o create-dev-environment
+
+       +o create-project
+
+       +o create-source-repository
+
+       +o create-source-repository-branch
+
+       +o delete-access-token
+
+       +o delete-dev-environment
+
+       +o delete-project
+
+       +o delete-source-repository
+
+       +o delete-space
+
+       +o get-dev-environment
+
+       +o get-project
+
+       +o get-source-repository
+
+       +o get-source-repository-clone-urls
+
+       +o get-space
+
+       +o get-subscription
+
+       +o get-user-details
+
+       +o get-workflow
+
+       +o get-workflow-run
+
+       +o help
+
+       +o list-access-tokens
+
+       +o list-dev-environment-sessions
+
+       +o list-dev-environments
+
+       +o list-event-logs
+
+       +o list-projects
+
+       +o list-source-repositories
+
+       +o list-source-repository-branches
+
+       +o list-spaces
+
+       +o list-workflow-runs
+
+       +o list-workflows
+
+       +o start-dev-environment
+
+       +o start-dev-environment-session
+
+       +o start-workflow-run
+
+       +o stop-dev-environment
+
+       +o stop-dev-environment-session
+
+       +o update-dev-environment
+
+       +o update-project
+
+       +o update-space
+
+       +o verify-session
+
+                                                                CODECATALYST()
