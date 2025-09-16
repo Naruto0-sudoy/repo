@@ -1,0 +1,32 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# กำหนด remote
+GDRIVE_REMOTE="gdrive"
+ONEDRIVE_REMOTE="onedrive"
+
+# โฟลเดอร์โปรเจกต์บนมือถือ
+GOOGLE_PROJECT="/storage/emulated/0/my_projects/google_project"
+AZURE_PROJECT="/storage/emulated/0/my_projects/azure_project"
+
+# โฟลเดอร์ปลายทางบน Cloud
+GDRIVE_DEST="projects/google_project"
+ONEDRIVE_DEST="projects/azure_project"
+
+echo "เริ่มย้าย Google Project ไป Google Drive..."
+if [ -d "$GOOGLE_PROJECT" ]; then
+    rclone move "$GOOGLE_PROJECT" "$GDRIVE_REMOTE:$GDRIVE_DEST" -P
+    echo "Google Project ย้ายเรียบร้อย ✅"
+else
+    echo "Google Project ไม่พบ!"
+fi
+
+echo "เริ่มย้าย Azure Project ไป OneDrive..."
+if [ -d "$AZURE_PROJECT" ]; then
+    rclone move "$AZURE_PROJECT" "$ONEDRIVE_REMOTE:$ONEDRIVE_DEST" -P
+    echo "Azure Project ย้ายเรียบร้อย ✅"
+else
+    echo "Azure Project ไม่พบ!"
+fi
+
+
+
