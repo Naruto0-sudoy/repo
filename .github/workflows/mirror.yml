@@ -1,0 +1,58 @@
+
+name: Mirror from Source
+
+on:
+  workflow_dispatch:       # กดรันเอง
+  schedule:
+    - cron: "0 2 * * *"   # รันทุกวันตี 2 UTC
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - source: https://github.com/original/ClickHouse.git
+            target: ClickHouse
+          - source: https://github.com/original/CoinSpace.git
+            target: CoinSpace
+          - source: https://github.com/original/docs.git
+            target: docs
+          - source: https://github.com/original/iam-verification.git
+            target: iam-verification
+          - source: https://github.com/original/linux.git
+            target: linux
+          - source: https://github.com/original/linux-bare.git
+            target: linux-bare
+          - source: https://github.com/original/linux-mirror.git
+            target: linux-mirror
+          - source: https://github.com/original/linux-work.git
+            target: linux-work
+          - source: https://github.com/original/repo.git
+            target: repo
+
+    steps:
+      - name: Ensure target repo exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh repo view YOUR_USER/${{ matrix.target }} || \
+          gh repo create YOUR_USER/${{ matrix.target }} --private
+
+      - name: Clone + Mirror + Push
+        run: |
+          git clone --mirror ${{ matrix.source }} source_repo
+          cd source_repo
+
+          echo "🔍 Checking branches..."
+          for branch in main master; do
+            if git ls-remote --heads origin $branch | grep -q $branch; then
+              echo "✅ Found $branch"
+            else
+              echo "⚠️ No $branch branch"
+            fi
+          done
+
+          git remote set-url --push origin https://github.com/YOUR_USER/${{ matrix.target }}.git
+          git push --mirror
