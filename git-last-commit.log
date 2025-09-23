@@ -1,0 +1,10 @@
+commit 108ed36af9b20988cee7237163eb60a4631790e4
+Merge: 988514d ae8e488
+Author:     Mike Linksvayer <mlinksva@github.com>
+AuthorDate: Mon Aug 25 13:54:01 2025 -0700
+Commit:     GitHub <noreply@github.com>
+CommitDate: Mon Aug 25 13:54:01 2025 -0700
+
+    Merge pull request #882 from licensee/dependabot/docker/ruby-8b541f8
+    
+    Bump ruby from `04121e6` to `8b541f8`
